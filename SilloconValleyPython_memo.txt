@@ -1,0 +1,4450 @@
+Udemy_SilloconValleyPython
+
+## Pycharm Tips ########################################################
+@ pycharmでの実行設定
+    Run-> Edit conf. -> '+'で実行設定
+
+@ pycharmのショートカット一覧：
+    https://pleiades.io/sites/willbrains.jp/keymap/pdf/shortcut_pycharm_windows.pdf
+    =>  Shift +  F10
+
+@ pycharmで作業ディレクトリ外のディレクトリ参照方法
+    File -> setting -> project structure
+    -> Add Content root
+    ！ Project root と別階層か同階層なら追加できる
+
+@ func.の仕様確認
+    cf. print(help(func))
+    cf. declaration: Ctrl + B
+
+@ formatの基本
+    print('My name is {name} {family}'.format(name='takuya', family='FAMILY'))
+
+@ Configurationを大量設定しないで、Udemyのレクチャーを実行する環境を構築する
+
+    １，Section以下に、lecture Dirの他、
+       main.pyを作成する。
+
+    ２，main.pyに対し、configuration設定する。
+
+    ３，各lecture Dir以下に、lecture.pyを作成し、各内容を写経する。
+        (Dir内に、__init__.pyを作ること)
+
+    ４，main内のimport文は、from パッケージ名 import Pyファイル名
+
+    ？，写経に関数が一枚かむ… 適切でない。下へ。
+
+@ Configure設定の多設定回避
+    暫定：python lectureXXX/lesson.py をコンソール実行
+
+@ リスト・辞書のコピー
+    参照渡し： y = x  =>書き換えが伝搬(アドレスがコピーされるから)
+    値渡し： y = x.copy() =>yを新規に作って、xの値が入る
+
+@ '[' ブランケッツ 
+
+@ '(' パレンティス
+
+@ '{' ブレイシズ
+
+@ 呪文
+    ブランケッツリスト、パレンティスタプル、ブレイシズディクト
+
+@ Pythonファイル先頭
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+
+@ Terminalへのショートカット
+    tab + ctrl + T
+
+@ Windowsのコマンドプロンプトでも画面をクリア
+    cls
+
+@ GUIでないデバッガ
+    pdbがあるが、設定がやりにくいのでデバッガしたい場合、
+    configureを利用したほうが良さそう。
+
+@ クラス名はキャメルケース, ファンクションは、スネークケース 
+    class PersonFactory(objest):
+        def get_template():
+    
+@ メソッド名は動詞開始が推奨(？)
+    def get_template():
+
+@ diffの取り方
+    view -> Ctrl + D
+
+#########################################################################
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section01	ここから開始しましょう。
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section02	Python環境の設定
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section03	Pythonの基本
+    lecture008:変数宣言
+    lecture009:まずはprintで出力
+    lecture010:数値
+    lecture011:文字列
+    lecture012:文字列のインデックスとスライス
+    lecture013:文字のメソッド
+    lecture014:文字の代入
+    lecture015:f-strings
+
+
+# lecture010:数値
+    // : 除数の正
+    ** : 自乗
+    round : まるめ
+        cf. round(3.15258, 2) => 3.14
+
+
+# lecture011:文字列
+    """内での非改行方法
+        => \
+
+
+# lecture012:文字列のインデックスとスライス
+    特になし。
+
+
+# lecture013:文字のメソッド
+    文字列の大文字・小文字化とか
+    s = 'My name is Mike. Hi Mike'
+    print(s.capitalize())               # 先頭大文字
+    print(s.title())                    # 区切り文字1文字を大文字
+    print(s.upper())                    # 大文字化
+    print(s.lower())                    # 小文字化
+    print(s.replace('Mike', 'Nancy'))   # 置換（re 不使用）
+    
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section04	データー構造
+    lecture016:リスト型
+    lecture017:リストの操作
+    lecture018:リストのメソッド
+    lecture019:リストのコピー
+    lecture020:リストの使い所
+    lecture021:タプル型
+    lecture022:タプルのアンパッキング
+    lecture023:タプルの使い所
+    lecture024:辞書型
+    lecture025:辞書型のメソッド
+    lecture026:辞書のコピー
+    lecture027:辞書の使い所
+    lecture028:集合型
+    lecture029:集合のメソッド
+    lecture030:集合の使い所
+#-------------------------------------------------------#
+
+# lecture016:リスト型
+    特になし。
+
+
+# lecture017:リストの操作
+    リストの一番最初に入れたい場合、
+        => n.insert(0,'saisho ni ireru')
+
+    リストaとbの連結結果をaにする場合、
+        => a = a+b じゃなく、a.extend(b)
+
+    リストの取り出し
+        => a.pop(0)
+
+
+# lecture018:リストのメソッド
+    joinはリストを受け付ける。
+        => x = ' '.join(['My', 'name', 'is', 'Mike'])
+
+
+# lecture019:リストのコピー
+    参照渡し と 値渡し
+    id(x)でアドレスを確認
+
+
+# lecture020:リストの使い所
+    特になし。
+
+
+# lecture021:タプル型
+    タプルの特性
+        タプルは、 '(' or ')'
+        x = 1, 2, 3 の時点でタプル型
+
+
+# lecture022:タプルのアンパッキング
+    最小入れ替え
+        a, b = b, a
+        print(a, b)
+
+
+# lecture023:タプルの使い所
+    多要素タプルの場合、リストからタプル化を検討
+        l = [1, 5]
+        m = tuple(l)
+        print(m)
+
+
+# lecture024:辞書型
+    特になし。
+
+
+# lecture025:辞書型のメソッド
+    辞書の結合更新
+        =>x.update(y)
+
+    辞書の参照
+        =>x.get('A')
+
+    辞書の取り出し
+        =>x.pop('A')
+
+    Keyがあるか
+        => 'A' in x
+
+
+# lecture026:辞書のコピー
+    参照渡し注意。
+
+
+# lecture027:辞書の使い所
+    特になし。
+
+
+# lecture028:集合型
+    特になし。
+
+
+# lecture029:集合のメソッド
+    追加・削除
+        a.add(100), a.remove(100)
+
+
+# lecture030:集合の使い所
+    種類統計
+        リストでappendしてから、セットで縮約する
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section05	制御フローとコード構造
+    lecture031:コメント
+    lecture032:1行が長くなる時
+    lecture033:if文
+    lecture034:デバッカーを使って確認してみる
+    lecture035:論理演算子
+    lecture036:InとNotの使い所
+    lecture037:値が入っていない判定をするテクニック
+    lecture038:Noneを判定する場合
+    lecture039:while文とcontinue文とbreak文
+    lecture040:while else文
+    lecture041:input関数
+    lecture042:for文とbreak文とcontinue文
+    lecture043:for else文
+    lecture044:range関数
+    lecture045:enumerate関数
+    lecture046:zip関数
+    lecture047:辞書をfor文で処理する
+    lecture048:関数定義
+    lecture049:関数の引数と返り値の宣言
+    lecture050:位置引数とキーワード引数とデフォルト引数
+    lecture051:デフォルト引数で気をつきること
+    lecture052:位置引数のタプル化
+    lecture053:キーワード引数の辞書化
+    lecture054:Docstringとは
+    lecture055:関数内関数
+    lecture056:クロージャー
+    lecture057:デコレーター
+    lecture058:ラムダ
+    lecture059:ジェネレータ
+    lecture060:リスト内包表記
+    lecture061:辞書内包表記
+    lecture062:集合内包表記
+    lecture063:ジェネレータ内包表記
+    lecture064:名前空間とスコープ
+    lecture065:例外処理
+    lecture066:独自例外の作成
+
+#-------------------------------------------------------#
+
+    # lecture031:コメント
+        特になし。
+
+
+    # lecture032:1行が長くなる時
+        長くなる箇所は、'\'でつなぐ。
+
+
+    # lecture033:if文
+        if > elif >else
+        (!: else ifでない)
+
+
+    # lecture034:デバッカーを使って確認してみる
+        IDEでのデバック機能ショートカットは、Shift ＋F9
+        コマンドデバックは、非実用的。
+
+
+    # lecture035:論理演算子
+        特になし。
+
+
+    # lecture036:InとNotの使い所
+        NotはBoolean判定に利用する。
+
+
+    # lecture037:値が入っていない判定をするテクニック
+        if len(listbox)>0: -> if listbox:
+
+
+    # lecture038:Noneを判定する場合
+        if is_empty == None:
+            print('None')
+        ->
+        if is_empty is None:
+            print('None')
+
+        "is"はオブジェクトが一致を判定している。
+        （Noneオブジェクトの判定に主に用いる）
+
+
+    # lecture039:while文とcontinue文とbreak文
+        "continue"は、whiteの次のループに移行する。
+
+
+    # lecture040:while else文
+        "else"は、"break"で抜けなければ、実行されるスクリプト。
+
+
+    # lecture041:input関数
+        "input()"標準入力関数。
+
+
+    # lecture042:for文とbreak文とcontinue文
+        "continue"は、forの次のイテレータに移行する。
+
+
+    # lecture043:for else文
+        "else"は、"break"で抜けなければ、実行されるスクリプト。
+
+
+    # lecture044:range関数
+        range(10) と range(0, 10, 1) は、等価。
+
+        イテレータのインデックスを使わない場合、
+        for _ in range(10)
+
+
+    # lecture045:enumerate関数
+        Usage：
+            for i, fruit in enumerate(['apple', 'banana', 'orange']):
+            print(i, fruit)
+
+
+    # lecture046:zip関数
+        Usage：
+            for day, fruit, drink in zip(days, fruits, drinks):
+                print(day, fruit, drink)
+
+
+    # lecture047:辞書をfor文で処理する
+        Usage：
+            d = {'x': 100, 'y': 200}
+            for k, v in d.items():
+                print(k, v)
+
+
+    # lecture048:関数定義
+        特になし。
+
+
+    # lecture049:関数の引数と返り値の宣言
+        trivia；
+            def add_num(a: int, b: int) -> int
+            しかし、Errorにならない。
+
+
+    # lecture050:位置引数とキーワード引数とデフォルト引数
+        特になし。
+
+
+    # lecture051:デフォルト引数で気をつきること
+        関数のデフォルト引数に(空の)'リスト'（’ディクショナリ’）を与えると、
+        リストは参照型なので予期しない動作が発生する恐れがある。
+
+
+    # lecture052:位置引数のタプル化
+        Usage *args;
+            def say_something(word, *args):
+            for arg in args:
+                print(arg)
+
+            say_something('Hi!', 'Mike', 'Nancy')
+
+
+    # lecture053:キーワード引数の辞書化
+        Usage **kwargs;
+        """
+            def menu(**kwargs):
+                for k, v in kwargs.items():
+                    print(k, v)
+
+            d = {
+                'entree': 'beef',
+                'drink': 'ice coffee',
+                'desert': 'ice'            }
+
+            menu(**d)
+        """
+
+        Usage 位置引数＋タプル化(*args)＋辞書化(**kwargs);
+        """
+            def menu(food, *args, **kwargs):
+                print(food)
+                print(args)
+                print(kwargs)
+
+
+            menu('banana', 'apple', 'orange', entree='beef', drink='coffee')
+        """
+            ->  banana
+                ('apple', 'orange')
+                {'entree': 'beef', 'drink': 'coffee'}
+
+
+    # lecture054:Docstringとは
+        関数の場合は、関数の中に書く。
+        とりあえず、Ctrl + Qで解釈できればよい。
+
+        Usage:
+        """
+            Args:
+                param1 (int):
+                param2 (str):
+
+            Returns:
+                flag (boolean) :
+        """
+
+
+    # lecture055:関数内関数
+        関数内関数は、特定関数内でのみ複数回利用される処理を対象にする。
+
+
+    # lecture056:クロージャー
+        ☆☆☆
+        クロージャーは、実行結果でなく関数を返す機能。
+        Usage:
+        """
+        def circle_area_func(pi):
+            def circle_area(radius):
+                return pi * radius * radius
+            return circle_area
+
+        ca1 = circle_area_func(3.14)
+        ca2 = circle_area_func(3.14159)
+
+        print(ca1(10))
+        print(ca2(10))
+        """
+
+
+    # lecture057:デコレーター
+        ☆☆☆
+        Usage:
+        """
+            def print_info(func):
+                def wrapper(*args, **kwargs):
+                    print('start')
+                    result = func(*args, **kwargs)
+                    print('end')
+                    return result
+                return wrapper
+
+            def print_more(func):
+                def wrapper(*args, **kwargs):
+                    print('func:', func.__name__)
+                    print('args:', args)
+                    print('kwargs', kwargs)
+                    result = func(*args, **kwargs)
+                    print('result:', result)
+                    return result
+                return wrapper
+
+            @print_info
+            @print_more
+            def add_num(a, b):
+                return a + b
+
+            r = add_num(10, 20)
+        """
+
+        
+        デコレータの表記順は、包括順となる。
+        つまり、内側の関数から実行されずに外側へ伝搬される。
+            start
+            func: add_num
+            args: (10, 20)
+            kwargs {}
+            result: 30
+            end
+
+
+    # lecture058:ラムダ
+        ☆☆☆
+        Usage:
+        """
+            l = ['Mon', 'tue', 'Wed', 'Thu', 'Fri', 'sat', 'Sun']
+
+
+            def change_word(words, func):
+                for word in words:
+                    print(func(word))
+
+
+            # def sample_func(word):
+            #     return word.capitalize()
+
+            change_word(l, lambda word: word.capitalize())
+            change_word(l, lambda word: word.lower())
+        """
+
+
+    # lecture059:ジェネレータ
+        ☆☆☆
+        ジェネレータはイテレータの要素の一つで、
+        一要素を取り出して生成する。
+
+        Usage:
+            def greeting():
+                yield 'Good morning'
+                yield 'Good afternoon'
+                yield 'Good night'
+
+            g = greeting()
+            print(next(g))
+            print(next(g))
+            print(next(g))
+
+
+    # lecture060:リスト内包表記
+        リスト内法表記はpythonの中では高速。
+
+        Usage：
+        """
+            t = (1, 2, 3, 4, 5)
+            r = [i for i in t if i % 2 == 0]
+            print(r)
+        """
+
+
+    # lecture061:辞書内包表記
+        Usage:
+        """
+            w = ['mon', 'tue', 'wed']
+            f = ['coffee', 'milk', 'water']
+
+            d = {x: y for x, y in zip(w, f)}
+            print(d)
+
+        """
+
+
+    # lecture062:集合内包表記
+        Usage:
+        """
+            s = {i for i in range(10)}
+            print(s)
+        """
+
+        {}だが、k,vでないので集合とわかる。
+
+
+    # lecture063:ジェネレータ内包表記
+        わかりにくい ＋ 使いにくい
+
+        Usage:
+        """
+            g = (i for i in range(3)) # <- ここのこと
+            print(type(g))
+            print(next(g))
+            print(next(g))
+            print(next(g))
+        """
+
+        タプルと区別がつかない(’(’)ので、
+        タプルの場合、tuple(~~~~~)と記述する。
+
+
+    # lecture064:名前空間とスコープ
+        locals() と globals(()  で宣言を確認できる。
+        (__doc__,__main__など)
+
+
+    # lecture065:例外処理
+        ☆☆☆
+        try -> except -> else -> finally
+        elseは、exceptionがないときにのみ実行される。
+
+        USAGE:
+        """
+            try:
+                l[10000]
+
+            except IndexError as ex:
+                print("Don't worry {}".format(ex))
+
+            else:
+                print('No Error')
+
+            finally
+                print('Clean up')
+        """
+
+
+
+    # lecture066:独自例外の作成
+        exception内ですべてのエラーをハンドリングすると、
+        どこで何のエラーが起こったのか把握できない。
+        すべてのExceptionを管理するクラスでも、独自例外クラスなら、
+        少なくてもどこで起こっているかわかる。
+        
+        USAGE:
+           1）似た例外を継承し、独自例外クラスを作る。
+           2）独自例外発生個所で、raiseする。
+           3) 独自例外発生個所の呼び出し部で、try-exceptする。
+
+        """
+            class UppercaseError(Exception):
+                pass
+
+            def check():
+                words = ['APPLE', 'orange', 'banana']
+                for word in words:
+                    if word.isupper():
+                        raise UppercaseError(word)
+            try:
+                check()
+            except UppercaseError as exc:
+                print('This is my Defined Error.')
+        """
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section06	モジュールとパッケージ
+    lecture067:コマンドライン引数
+    lecture068:import文とAS
+    lecture069:絶対パスと相対パスのimport
+    lecture070:アスタリスクのインポートと__init__.pyと__all__の意味
+    lecture071:importErrorの使い所
+    lecture072:setup.pyでパッケージ化して配布する
+    lecture073:組み込み関数
+    lecture074:標準ライブラリ
+    lecture075:サードパーティーのライブラリ
+    lecture076:importする際の記述の仕方
+    lecture077:__name__と__main__
+
+#-------------------------------------------------------#
+
+
+
+    # lecture067:コマンドライン引数
+        import sys
+        sys.argv（これはリスト型）で引数を受け取れる。
+
+
+    # lecture068:import文とAS
+        モジュールを格納したパッケージから、モジュールをインポート対象にする。
+
+        #1:  import 大パッケージ.中パッケージ.小パッケージ.モジュール
+        #2:  from 大パッケージ.中パッケージ.小パッケージ import モジュール
+
+        ★★★ コードチェックエラーと***ModuleFoundError
+            本来は実行ファイルがpwd(ProjectWorkingDirectory)の内にあることを前提としていることが原因。
+            バラバラであると、実行ファイルのディレクトリとpwdにデフォルトのpath解釈で実行がかかる。
+            よってコードチェックエラーは〇だが、実行×、
+            コードチェックエラーは×だが、実行〇といった事態が発生する。
+            Configuration その他で設定は可能。
+
+
+    # lecture069:絶対パスと相対パスのimport
+        特になし。
+
+
+    # lecture070:アスタリスクのインポートと__init__.pyと__all__の意味
+        __init__.py内に、__all__ = [mojule名,...]でかける。
+        ただし、推奨されていない。
+
+
+
+
+    # lecture071:importErrorの使い所
+        モジュールインポートの際、TryでExceptすることは、ままある。
+
+
+    # lecture072:setup.pyでパッケージ化して配布する
+        ☆☆☆
+        以下の手順は開いている「Project」に対し、実施される。
+        １）Tools タブ → Create setup.py
+        ２）スクリプトやオーサー情報を記載する。
+        ３）Tools タブ → Run setup.py tasks → sdist
+        ４）dist/*～.tar.gz を得る。
+
+        Pycharmで行わない場合
+        １）setup.pyに必要事項を記載する
+        ２）python setup.py sdist
+        ３）dist/*～.tar.gz を得る。
+
+
+    # lecture073:組み込み関数
+        importせず、python既存の関数の照会は、
+        python 組み込み関数 で確認できる。
+
+
+    # lecture074:標準ライブラリ
+        準備済みライブラリは、
+        python  標準ライブラリ で確認できる。
+
+        Sample:
+        """
+            from collections import defaultdict
+            d = defaultdict(int)
+            for c in s:
+                d[c] += 1
+            print(d)
+        """
+
+
+    # lecture075:サードパーティーのライブラリ
+
+        tar.gz化したプログラムの公開共有レポジトリがPyPI。
+        これについてのインストールを簡潔化するため、pip installがある。
+
+        ★サードパーティライブラリ：termcolorについて
+            ※... windowsの場合、termcolorに加え、coloramaのインストール（初期化）が必要。
+        """
+            from termcolor import colored
+            import colorama
+            colorama.init()
+
+            w = colored('test', 'blue')
+            print(w)
+        """
+
+
+    # lecture076:importする際の記述の仕方
+
+        ★インポート記述のルール
+            １）標準ライブラリ
+            ２）サードパーティ
+            ３）ローカルの自作ライブラリ
+            ４）１～３の間にスペース ＋ 文字a-zでソート
+
+        ★インポートライブラリの場所の確認方法
+            １－１）プログラム記載にマウスオン
+            １－２）右クリック → Go TO → Declaration
+
+            ２－１）print(******.__file__)
+
+            ※... print(sys.path)のpath内以下に、
+                    ライブラリがあることを確認する
+
+
+    # lecture077:__name__と__main__
+        __name__とすると、ファイル性質により、
+        実行ファイル：__main__，
+        呼出ファイル：呼出ファイル名
+
+        if __name__ == '__main__':  
+            main()
+        を記載することで、プリントデバッグ箇所等が
+        部呼出時に実行される恐れを回避する。
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section07	オブジェクトとクラス
+    lecture078:クラスの定義
+    lecture079:クラスの初期化とクラス変数
+    lecture080:コンストラクタとデクストラクタ
+    lecture081:クラス継承
+    lecture082:メソッドのオーバーライドとsuperによる親のメソッドの呼び出し
+    lecture083:プロパティーを使った属性の設定
+    lecture084:クラスを構造体として扱う時の注意点
+    lecture085:ダックタイピング
+    lecture086:抽象クラス
+    lecture087:多重継承
+    lecture088:クラス変数
+    lecture089:クラスメソッドとスタティックメソッド
+    lecture090:特殊メソッド
+
+#-------------------------------------------------------#
+
+
+    # lecture078:クラスの定義
+        Class ClassName (object) を コーディング規約とする。
+
+
+    # lecture079:クラスの初期化とクラス変数
+        特になし。
+
+
+    # lecture080:コンストラクタとデクストラクタ
+        __del__ がデクストラクタ
+        del "objectname" で明示的にでクストラクタを呼び出せる。
+
+
+    # lecture081:クラス継承
+        特になし。
+
+
+    # lecture082:メソッドのオーバーライドとsuperによる親のメソッドの呼び出し
+        メソッドのオーバーライドしたい場合、
+        def __init__(self, stay_variable, new_variable):
+        そのまま呼び出したい変数は、「super().__init__(stay_variable)」
+        新たに追加したい変数は、「self.new_variable = new_variable」とする。
+
+
+    # lecture083:プロパティーを使った属性の設定
+        Javaのカプセル(しgetter,setter)のように変数の設定を制御する場合に用いる。
+
+        __xxx: 外部からのアクセスを拒否。内部のクラスからのアクセスは許可。
+        _xxx:  外部からのアクセスを非推奨を表現。
+               xxxに対し、@propertyでgetterを用意、
+               @property指定の関数名,setterでsetterを用意できる。
+               ただし、_xxxの場合、書き換え可能な点は注意。
+
+        Usage:
+        """
+            class TeslaCar(Car):
+                def __init__(self, model='Model s', enable_auto_run=False):
+                    super().__init__(model)
+                    self._enable_auto_run = enable_auto_run
+
+                @property
+                def enable_auto_run(self):
+                    return self._enable_auto_run
+
+                @enable_auto_run.setter
+                def enable_auto_run(self, is_enable):
+                    self._enable_auto_run = is_enable
+        """
+
+
+    # lecture084:クラスを構造体として扱う時の注意点
+        クラスのインスタンス変数は上書きできるので、
+        クラスの構造体を把握して、コーディングすること。
+
+
+    # lecture085:ダックタイピング
+        抽象クラスとサブクラスの実装の際に、
+        サブクラスを人間が理解しやすい形のクラス名とする。
+
+        クラスが別であっても同じ名前のメソッドを使用することができ、
+        異なるオブジェクトで同じ操作を切り替えて使うコードのこと。
+
+
+    # lecture086:抽象クラス
+        抽象クラス内に抽象メソッドを定義する方法：
+        """
+            import abc
+            class Person(metaclass=abc.ABCMeta):
+                def __init__(self, age=1):
+                    self.age = age
+                @abc.abstractmethod
+                def drive(self):
+                    pass
+        """
+        このクラス（継承したクラス含む）は、
+        abstractmethod指定のメソッドの定義なしに、インスタンス生成できない。
+
+
+    # lecture087:多重継承
+        継承クラスので同一メソッドは継承宣言の左優先で定義される。
+
+
+    # lecture088:クラス変数
+        クラス変数とは、class と def __init__間に定義する変数。
+        インスタンス間で共有される。
+
+
+    # lecture089:クラスメソッドとスタティックメソッド
+        クラスメソッドは、インスタンス生成によらず呼び出し可能で、クラス変数に関与する関数
+        スタティックメソッドは、インスタンス生成によらず呼び出し可能で、クラス変数に関与しない関数
+        （クラス外で宣言しているのと変わらない。）
+        Usage：<
+        """
+            class Person(object):
+                kind = 'human'
+
+                def __init__(self):
+                    self.x = 100
+
+                @classmethod
+                def what_is_your_kind(cls):
+                    return cls.kind
+
+                @staticmethod
+                def about(year):
+                    print('about human'.format(year))
+
+
+        """
+
+
+    # lecture090:特殊メソッド
+        __init__, __str__, __len__, __add__, __eq__等のメソッド。
+
+        Usage：
+        """
+            class Word(object):
+                def __init__(self, text):
+                    self.text = text
+
+                def __str__(self):
+                    return 'word!!!'
+
+            w = Word('test')
+            print(w)            # word!!!
+        """
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section08	ファイル操作とシステム
+    lecture091:ファイル作成
+    lecture092:withステートメントでファイルをopenする
+    lecture093:ファイルの読み込み
+    lecture094:seekを使って移動する
+    lecture095:書き込み読み込みモード
+    lecture096:テンプレート
+    lecture097:CSVファイルへの書き込みと読み込み
+    lecture098:ファイル操作
+    lecture099:tarfileの圧縮解凍
+    lecture100:zipfileの圧縮解凍
+    lecture101:tempfile
+    lecture102:subprocessでコマンドを実行する
+    lecture103:datetime
+
+#-------------------------------------------------------#
+
+
+    # lecture091:ファイル作成
+    Usage:
+    """
+        f = open('test.txt', 'w')
+        f.write('Test')
+        f.close()
+    """
+
+
+    # lecture092:withステートメントでファイルをopenする
+    Usage:
+    """
+        with open('test.txt', 'w') as f:
+        f.write('test')
+    """
+
+
+    # lecture093:ファイルの読み込み
+    Usage:
+    """
+        with open('test.txt', 'r') as f:
+        while True:
+            line = f.readline()
+            print(line, end='')
+            if not line:
+                break
+    """
+
+
+    # lecture094:seekを使って移動する
+        f.seek(num)で文字アドレスを移動できる。
+        移動後からの読み込み等が可能になる。
+
+
+    # lecture095:書き込み読み込みモード
+    Usage：
+    """
+        # 書き込み ＋ 読み込み
+        with open('test.txt', 'w+') as f:
+            f.write(s)
+            f.seek(0)
+            print(f.read())
+
+        # 読み込み ＋ 書き込み
+        with open('test.txt', 'r+') as f:
+            print(f.read())
+            f.read(0)
+            f.write(s)
+    """
+
+
+    # lecture096:テンプレート
+    ☆☆☆
+    Usage:
+    """
+        s = """\
+        Hi $name.           #
+        $contents           # ここをTXTに記載しておく。
+        Have a good day     #
+        """
+
+        with open('design/email_template.txt', 'r') as f:
+            t = string.Template(f.read())
+
+        contents = t.substitute(name='Mike', contents='How are you?')
+        print(contents)
+
+    """
+
+
+    # lecture097:CSVファイルへの書き込みと読み込み
+    Usage:
+    """
+        import csv
+
+        with open('test.csv', 'w', newline='') as csvfile:
+            fieldnames = ['name', 'count']
+            writer = csv.DictWriter(csvfile, fieldnames)
+            writer.writeheader()
+            writer.writerow({'name': 'A', 'count': '1'})
+            writer.writerow({'name': 'B', 'count': '1'})
+
+        with open('test.csv', 'r',) as csv_file:
+            reader = csv.DictReader(csv_file)
+            for row in reader:
+                print(row['name'], row['count'])
+    """
+
+
+    # lecture098:ファイル操作
+
+        ☆ import os
+        ☆ import pathlib
+        ☆ import glob
+        ☆ import shutil
+
+        空ファイルの作成：pathlib.Path(EMPTY_FILE).touch()
+        ファイルの削除： os.remove(FILE_NAME)
+        ファイルのコピー：shutil.copy(BASE_FILE, COPY_FILE)
+
+        ファイルのリネーム：os.rename(FILE_NAME, NEW_FILE_NAME)
+        ファイルのシムリンクコピー：os.symlink(FILE_NAME, SYM_FILE_NAME)
+
+        ファイルがあるか？：os.path.exists(FILE_NAME)
+        ファイルかどうか？：os.path.isfile(FILE_NAME)
+        ディレクトリかどうか？：os.path.isdir(FILE_NAME)
+
+        ディレクトリの作成：os.mkdir(MAKE_DIR)
+        ディレクトリの削除：os.rmdir('test_dir')
+        ディレクトリの作成（再帰的）：os.makedirs(DEEP_MAKE_DIR)
+        ディレクトリの削除（再帰的）：shutil.rmtree(DEEP_MAKE_DIR)
+
+        ディレクトリ内ディレクトリの検索：os.listdir(SEARCH_DIR)
+        ディレクトリ内の検索：glob.glob(SEARCH_DIR/*)
+
+        現在位置の確認：os.getcwd()
+
+
+    # lecture099:tarfileの圧縮解凍
+    Usage:
+    """
+        import tarfile
+
+        with tarfile.open('test.tar.gz', 'w:gz') as tr:
+            tr.add(TAR_PATH)
+
+        with tarfile.open('test.tar.gz', 'r:gz') as tr:
+            tr.extractall(UN_TAR_PATH)
+    """
+
+
+    # lecture100:zipfileの圧縮解凍
+    Usage:
+    """
+        import zipfile
+        import glob
+
+        with zipfile.ZipFile('test.zip', 'w') as z:
+            for f in glob.glob(r'~ZIP_DIR_PATH/**', recursive=True):
+                print(f)
+                z.write(f)
+
+        with zipfile.ZipFile('test.zip', 'r') as z:
+            z.extractall('zip')
+    """
+
+
+    # lecture101:tempfile
+    Usage:
+    """
+        import tempfile
+
+        with tempfile.TemporaryFile(mode='w+') as t:    # temp
+            t.write('hello')
+            t.seek(0)
+            print(t.read())
+
+        with tempfile.NamedTemporaryFile(delete=False) as t:    # 非temp
+            print(t.name)
+            with open(t.name, 'w+') as f:
+                f.write('test\n')
+                f.seek(0)
+                print(t.read())
+
+        with tempfile.TemporaryDirectory() as td:   # temp
+            print(td)
+
+        temp_dir = tempfile.mkdtemp()               # 非temp
+        print(temp_dir)
+    """
+    # lecture102:subprocessでコマンドを実行する
+        import subprocess
+        subprocess.run([CMD,QUOTE])
+
+
+    # lecture103:datetime
+    Usage:
+    """
+        import datetime
+        now = datetime.datetime.now()
+        print(now)
+        print(now.isoformat())
+        print(now.strftime('%Y/%d/%m %H:%M:%S.%f'))
+
+        import time
+        print('#####')
+        time.sleep(1)
+        print('#####')
+
+    """
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section09	入門編の終了 応用編に行く前に簡単なアプリケーションの演習
+    lecture104:windowsとmacのコマンド
+    lecture105:簡単なアプリケーションを作って見よう
+    lecture106:デモアプリケーションの流れを説明したPDF
+    lecture107:デモアプリのコードを展開する
+    lecture108:サンプルのデモアプリケーションのコード
+    lecture109:サンプルコードの設計とフォルダ構造
+    lecture110:サンプルコードのviewsとテンプレートの解
+    lecture111:サンプルコードのmodelsとcontrollerの開設
+
+#-------------------------------------------------------#
+
+
+    # lecture104:windowsとmacのコマンド
+        検索したいコマンドを指定する：where
+        表示をクリアする：cls
+        ファイルやディレクトリの情報を表示する：dir
+        ディレクトリ間の移動：cd
+        ディレクトリを作成：md
+        テキストファイルの内容を表示：type
+        ディレクトリを移動：move
+        ディレクトリをコピー：xcopy /e /c /h
+        ディレクトリを削除：rd
+        ファイルを移動：move
+        ファイルをコピー：copy
+        ファイルを削除：del
+        現在のディレクトリの場所を確認する：dir
+
+
+    # lecture105:簡単なアプリケーションを作って見よう
+        【実装について】
+            ・"roboter" にモジュールをまとめパッケージとする。
+            ・"roboter"とmain.pyは等位とする。
+            ・"roboter"以下には、MVCのパッケージを作成する。
+            ・"roboter"以下には、出力テンプレートをまとめたdesignフォルダを作成する。
+            ・Contraller パッケージの実行モジュールは、実行のフローを記載するのみとする。
+            ・Contraller パッケージの実行モジュールのクラスは、モジュール名を具体化したものとする。
+            ・Contraller パッケージの実行モジュールのインスタンス作成ではクラス動作がわかるインスタンス名とする。
+            ・Modelは実装実態のモジュールを格納する。
+            ・Modelでのモジュールの単位はオブジェクト単位とする。
+            ・Viewではコマンドコンソールについてのモジュールを作成した。
+            ・Viewでのコマンドコンソールのモジュールでは、テンプレートを利用し、構造化した。。
+            
+            
+        【改善事項】
+            ・Modelでのモジュール(特にranking.py)の凝集度が低く、
+                write_listを切り出しているなら、リストの読み込みをread_listとして同様に切り出せる。
+            ・ViewでWebコンソールが増えたら継承できたか？
+            ・デコレータを利用して、viewをリッチにできていない。
+            ・実装中のコード確認がprintデバッグで行っており、仕様の理解が不明である。
+            ・コメントの記載がない.
+            
+               
+
+
+    # lecture106:デモアプリケーションの流れを説明したPDFファイル
+        特になし。
+
+
+    # lecture107:デモアプリのコードを展開する
+        特になし。
+
+
+    # lecture108:サンプルのデモアプリケーションのコード
+        特になし。
+
+
+    # lecture109:サンプルコードの設計とフォルダ構造
+        登場人物（オブジェクト）を、そのままコードにしていくのが、オブジェクト指向
+        (i.e, ロボットとランキングファイルがある。→ model/robot.py, ranking.py)
+
+
+    # lecture110:サンプルコードのviewsとテンプレートの解説
+        メソッドの宣言順
+            コア順
+
+
+    # lecture111:サンプルコードのmodelsとcontrollerの開設
+        デコレータの活用
+            デコレータでメソッドの実行フローを強制することもできる。
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section10	コードスタイル
+    lecture112:コードスタイルをチェックするツールの確認
+    lecture113:スタイルのルール
+    lecture114:Pythonの書き方
+    lecture115:ドキュメントとPylint
+    lecture116:文章のようにPythonを書く
+
+#-------------------------------------------------------#
+
+
+    # lecture112:コードスタイルをチェックするツールの確認
+        ・pep8: コードスタイルチェック（主に表記）
+            pep8 main.py
+        
+        ・flake8: コードスタイルチェック（主に使われていないライブラリとか） 
+            flake8 main.py
+        
+        ・pylint: コードスタイルチェック
+            pylint main.py
+            
+        厳しさ：pylint > flake8 > pep8
+
+
+    # lecture113:スタイルのルール
+        ・一文の長さは80文字（デフォルト）。ただし、URLは可。
+        ・改行した場合、先頭を合わせる。
+
+
+    # lecture114:Pythonの書き方
+        ★pythonic
+        ・Generater（forより速い）:
+            def t():
+                for i in range(10):
+                    yield i
+
+            for i in t():
+                print(i)
+                
+        ・lambda（無名関数・・・関数定義より速い）:
+            print((lambda x, r: x*r)(8000, 1.08))
+            
+        ・一行if文:
+            y = None
+            x = 1 if y else 2   # x = 2
+            
+        ・クロージャー:
+        ・デコレーター:
+
+
+    # lecture115:ドキュメントとPylint
+        特になし。
+
+
+    # lecture116:文章のようにPythonを書く
+        特になし。
+
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section11   コンフィグとロギング
+    lecture117:応用編に行く前に
+    lecture118:configparser
+    lecture119:yaml
+    lecture120:ロギング
+    lecture121:ロギング フォーマット
+    lecture122:ロギング ロガー
+    lecture123:ロギング ハンドラー
+    lecture124:ロギング フィルタ
+    lecture125:ロギング コンフィグ
+    lecture126:ロギングの書き方
+    lecture127:Email送信
+    lecture128:添付ファイルEmail送信
+    lecture129:SMTPハンドラーでログをEmailで送信
+    lecture130:virtualenv
+    lecture131:optparse
+
+#-------------------------------------------------------#
+
+
+    # lecture117:応用編に行く前に
+        特になし。
+
+
+    # lecture118:configparser
+    Usage:
+        import configparser
+
+        path = r'section11/lecture118/config.ini'
+
+        # write
+        config = configparser.ConfigParser()
+        config['DEFAULT'] = {
+            'debug': True
+        }
+        config['web_server'] = {
+            'host': '127.0.0.1',
+            'port': 80
+        }
+        config['db_server'] = {
+            'host': '127.0.0.1',
+            'port': 3206
+        }
+        with open(path, 'w', encoding='utf8') as config_file:
+            config.write(config_file)
+
+        # read
+        config = configparser.ConfigParser()
+        config.read(path, encoding='utf8')
+        print(config.sections())
+        print([x for x in config['web_server']])
+        print(config['web_server']['host'])
+
+
+    # lecture119:yaml
+    Usage:
+        import yaml
+
+        path = r'section11/lecture119/config.yml'
+
+        # write
+        with open(path, 'w', encoding='utf8') as yaml_file:
+            yaml.dump({
+                'web_server': {
+                    'host': '127.0.0.1',
+                    'port': '80'
+                },
+                'db_server': {
+                    'host': '127.0.0.1',
+                    'port': '3306'
+                }
+            }, yaml_file, default_flow_style=False)
+
+        # read
+        with open(path, 'r', encoding='utf8') as yaml_file:
+            data = yaml.load(yaml_file)
+            print(data)
+            print(data['web_server']['host'])
+
+
+    # lecture120:ロギング
+    ☆☆☆ロギングについては、以下のロギング章がわかりやすい。
+    「pythonではじめるソフトウェアアーキテクチャ」
+    
+    
+    Usage:
+        import logging
+
+        path = r'section11/lecture120/api.log'
+        logging.basicConfig(filename=path, level=logging.DEBUG)
+
+        logging.info('info {} {}'.format('test', 'test2'))    
+    
+
+
+    # lecture121:ロギング フォーマット
+        basicConfig(~, format=*****)でログフォーマットを指定
+            formatter = '%(levelname)s: %(message)s'
+            # python用ロギング機能から、フォーマットを確認できる。
+
+
+    # lecture122:ロギング ロガー
+        ロギングのやり方：
+            メインのモジュールでloggingをセッティング（ロギングにlogger使用もある）し、
+            サブのモジュールごとにloggerをセッティングする。
+        Uage：
+            ### main.py
+            import logging
+
+            logging.basicConfig(level=logging.INFO)
+            logging.info('info')
+            import logtest
+            logtest.do()
+            
+            ### log test
+            import logging
+
+            logger = logging.getLogger(__name__)
+            logger.setLevel(logging.DEBUG)
+
+            def do_something():
+                logger.debug('from logtest debug')
+
+
+    # lecture123:ロギング ハンドラー
+        ハンドラー：ログを出す場所・チャネルを指定する処理
+        Usage：
+            import logging
+
+            logger = logging.getLogger(__name__)
+            logger.setLevel(level=logging.INFO)
+
+            h = logging.FileHandler('logtest.log')
+            h.setFormatter(logging.Formatter('%(levelname)s: %(message)s'))
+            logger.addHandler(h)
+
+            logger.info('handler')
+            
+        ？ ロガーを用いた際の"__main__, root"の出し方は不明。
+
+
+    # lecture124:ロギング フィルタ
+        フィルター：特定の文字列を含むログを出さないための処理
+        Usage：
+            import logging
+
+            logging.basicConfig(level=logging.INFO)
+
+
+            class NoPassFilter(logging.Filter):
+                def filter(self, record):
+                    log_message = record.getMessage()
+                    return 'password' not in log_message
+
+
+            logger = logging.getLogger(__name__)
+            logger.addFilter(NoPassFilter())
+            logger.info('OK info')
+            logger.info('password:={}'.format('password'))
+
+
+    # lecture125:ロギング コンフィグ
+        コンフィグ：スクリプト内でロガーの振る舞いを定義するのではなく、
+                    'config.ini'のようにファイルから与える。
+                    import logging.config
+                    logging.config.fileConfig('config.ini')
+                                        
+                    logger = logging.getLogger('simpleExample')
+        
+        logging.config.fileConfig, logging.config.dictConfig等がある。
+
+
+    # lecture126:ロギングの書き方
+        class,def,processの実行において、
+        開始(run),終了(success,fail) : これらをエラーレベルを含めて用いる。
+
+
+    # lecture127:Email送信
+        Gmail,Outlook設定の調査が必要。
+        送信処理には以下のライブラリが必要。
+        
+        from email import message
+        import smtplib
+
+
+    # lecture128:添付ファイルEmail送信
+        Gmail,Outlook設定の調査が必要。
+        添付付き送信処理には以下のライブラリが必要。
+
+        from email import message
+        from email.mine import multipart
+        from email.mine import text         # 添付がtextだから。
+        import smtplib
+
+
+    # lecture129:SMTPハンドラーでログをEmailで送信
+        ロガーにSMTPハンドラーを指定する。
+            logger.addHandler(logging.handlers.SMTPHandler(
+                ~~~~
+                )
+            )
+
+
+    # lecture130:virtualenv
+        pyCharmでvirtualenv方法：
+            1)  setting
+            2)  project interpriter
+            3)  右端のAdd(Local)  
+                ※  Localが見切れている。
+                    Local に virtualenv を Add するの略
+            4)  interproter(pythonのVer)を指定し、
+                path末尾のvenv(名称変更可)を確認しApply、OK
+            5)  Project Dirにvenvができる。
+
+
+    # lecture131:optparse
+    Usage_sample:
+        usage = 'usage %prog [option] arg1 arg2'
+        parser = OptionParser(usage=usage)
+        parser.add_option('-f', '--file', action='store', type='string',
+                          dest='filename', help='File name')
+        parser.add_option('-n', '--num', action='store', type='int', dest='num')
+
+        # optionが指定されれば、固定boolean設定 / defaultはoption指定に依らない。
+        parser.add_option('-v', action='store_true', dest='verbose', default=True)
+        parser.add_option('-q', action='store_false', dest='verbose', default=False)
+        parser.set_defaults(verbose=True)
+
+        # optionが指定されれば、固定値設定
+        parser.add_option('-r', action='store_const', const='root', dest='user_name')
+
+        # Call back
+        parser.add_option('-e', dest='env')
+
+        def is_release(option, opt_str, value, parser):
+            if parser.values.env == 'prd':
+                raise parser.error("Can't release")
+            setattr(parser.values, option.dest, True)
+        parser.add_option('--release', action='callback', callback=is_release, dest='release')
+
+        # 通常と異なるOptionを指定する
+        group = OptionGroup(parser, 'Dangerous Options')
+        group.add_option('-g', action='store_true', help='Group option')
+        parser.add_option_group(group)
+
+        options, args = parser.parse_args()
+
+        print(options)
+        print(args)
+
+        print(options.filename)
+        print(options.num)
+        print(options.verbose)
+
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section12   データベース
+    lecture132:データベースに関して
+    lecture133:MacにHomeBrewとSQLiteをインストールする
+    lecture134:WindowsにSQLiteをインストールする
+    lecture135:SQLite
+    lecture136:MacにMySQLをインストールする
+    lecture137:WindowsにMySQLをインストールする
+    lecture138:MySQL
+    lecture139:SQLAlchemy
+    lecture140:DBM
+    lecture141:memcached
+    lecture142:pickle
+    lecture143:MacにMongoDBをインストールする
+    lecture144:WindowsにMongoDBをインストールする
+    lecture145:MongoDB
+    lecture146:Hbase
+    lecture147:Macにneo4jをインストールする
+    lecture148:Windowsにneo4jをインストールする
+    lecture149:neo4j
+    lecture150:データベースのおさらい
+
+#-------------------------------------------------------#
+
+
+    # lecture132:データベースに関して
+        RDB:
+            MySQL,SQLite
+        NoSQL:
+            キーバリュー型：memcach
+            ドキュメント型：MongoDB
+            ワイドカラム型：Hbase,cassandra
+            グラフ型：Neo4j
+
+
+    # lecture133:MacにHomeBrewとSQLiteをインストールする
+        特になし。
+
+
+    # lecture134:WindowsにSQLiteをインストールする
+        SQLiteサイトからダウンロードし、
+        環境変数を通しているANACONDA以下に展開exeを配置する。
+
+
+    # lecture135:SQLite
+        SQLite活用の流れ
+            １）DB接続(作成)    sqlite3.connect()
+            ２）カーソルの開始  conn.cursor()
+            ３）クエリの実行    curs.execute(CREATE TABLE persons(~~~))
+            ４）DBのコミット    conn.commit()
+            ５）カーソルの切断  curs.close()
+            ６）DB接続の切断    conn.close()
+        
+        Usage:
+            import sqlite3
+
+            conn = sqlite3.connect('test_sqlite.db')
+            # conn = sqlite3.connect(':memory:')
+
+            curs = conn.cursor()
+            curs.execute(
+                'CREATE TABLE persons ( id INTEGER PRIMARY KEY AUTOINCREMENT,'
+                '                       name STRING )')
+            curs.execute('INSERT INTO persons(name) values("Mike")')
+            curs.execute('INSERT INTO persons(name) values("Nancy")')
+            curs.execute('INSERT INTO persons(name) values("Jun")')
+            curs.execute('UPDATE persons set name = "Michel" WHERE name = "Mike"')
+
+            curs.execute('DELETE from persons WHERE name = "Michel"')
+            curs.execute('SELECT * FROM persons')
+            print(curs.fetchall())
+
+            curs.close()
+
+            conn.commit()
+            conn.close()
+            
+        ！：DBすでに作ってある場合やスクリプト挙動の確認には、
+            conn = sqlite3.connect(':memory:')の方でインメモリ下で確認できる。
+
+
+
+    # lecture136:MacにMySQLをインストールする
+        特になし。
+
+
+    # lecture137:WindowsにMySQLをインストールする
+        MySQL8.xでコマンド仕様がやや異なる点に注意
+        参考<https://qiita.com/rubytomato@github/items/b0e61cb6fe1068d55c40>
+        
+        MySQL起動/終了  Dir<cd C:/mysql-8.0.15-winx64/bin>
+            Terminal1:
+                mysqld --defaults-file=C:\mysql-8.0.15-winx64\my.ini --console
+            
+            Terminal2:
+                mysql -u root -p
+                    password:<errorlog->設定したpass：ALTER USER 'root'@'localhost' IDENTIFIED BY '***';>
+                mysql -u root -p
+                \q
+                mysqladmin -u root -p shutdown
+
+
+    # lecture138:MySQL
+        Usage:
+            import mysql.connector
+
+            # DBの接続
+            # conn = mysql.connector.connect(
+            #     host='localhost', user='root', password='OWN_PASSWORD')
+            # # 本物のIPアドレスを入れると設定してないのでErrorになる。
+            #
+            # cursor = conn.cursor()
+            #
+            # cursor.execute('CREATE DATABASE test_mysql_database')
+            # cursor.close()
+            # conn.close()
+
+            # Tableの作成
+            # conn = mysql.connector.connect(
+            #     host='localhost', database='test_mysql_database',
+            #     user='root', password='OWN_PASSWORD')
+            # cursor = conn.cursor()
+            # cursor.execute('CREATE TABLE persons('
+            #               'id int NOT NULL AUTO_INCREMENT,'
+            #               'name varchar(14) NOT NULL,'
+            #               'PRIMARY KEY(id))')
+            # conn.commit()
+            # cursor.close()
+            # conn.close()
+
+            # rowの挿入
+            # conn = mysql.connector.connect(
+            #     host='localhost', database='test_mysql_database',
+            #     user='root', password='OWN_PASSWORD')
+            # cursor = conn.cursor()
+            # cursor.execute('INSERT INTO persons(name) values("Mike")')
+            # conn.commit()
+            # cursor.execute('SELECT * FROM persons')
+            # for row in cursor:
+            #     print(row)
+            # 
+            # cursor.close()
+            # conn.close()
+
+            # rowの更新と削除
+            # cursor.execute('UPDATE persons set name = "Michel" WHERE name = "Mike"')
+            # cursor.execute('DELETE FROM persons WHERE name = "Mike"')
+
+            # MySQLでの確認(ログイン後)
+            # show databases;
+            # use test_mysql_database;
+            # select* from test_mysql_database limit 100;
+
+
+    # lecture139:SQLAlchemy
+        SQLAlchemyの設定手順
+            １）接続エンジンの設定(接続するDBMS(SQLiteやMySQL等)を指定)
+            ２）declarative_baseクラスを継承して、構築テーブルのクラスを作成
+            ３）BaseとSessionを開始
+            ４）Insert/Update/Delete    (各行に対し実施するイメージ→クラス名に単一名称を付与)
+            －）標準出力
+            
+        Usage：
+            import sqlalchemy
+            import sqlalchemy.ext.declarative
+            import sqlalchemy.orm
+
+            # SQLite
+            # 練習 インメモリ
+            # engine = sqlalchemy.create_engine('sqlite:///:memory:')
+            # engine = sqlalchemy.create_engine('sqlite:///:memory:', echo=True)
+            # 実体での実行
+            # engine = sqlalchemy.create_engine('sqlite:///test_sqlite', echo=True)
+
+            # MySQL (先にDBが必要)
+            engine = sqlalchemy.create_engine(
+                'mysql+pymysql://root:OWN_PASSWORD@localhost/test_mysql_database2',echo=True)
+
+            Base = sqlalchemy.ext.declarative.declarative_base()
+
+            class Person(Base):
+                __tablename__ = 'persons'
+                id = sqlalchemy.Column(
+                    sqlalchemy.Integer, primary_key=True, autoincrement=True)
+                name = sqlalchemy.Column(sqlalchemy.String(14))
+
+            Base.metadata.create_all(engine)
+            Session = sqlalchemy.orm.sessionmaker(bind=engine)
+            session = Session()
+
+            # Insert
+            p1 = Person(name='Mike')
+            session.add(p1)
+            p2 = Person(name='Nancy')
+            session.add(p2)
+            p3 = Person(name='Jun')
+            session.add(p3)
+            session.commit()
+
+            # Update
+            p4 = session.query(Person).filter_by(name='Mike').first()
+            p4.name = 'Michel'
+            session.add(p4)
+            session.commit()
+
+            # Delete
+            p5 = session.query(Person).filter_by(name='Michel').first()
+            session.delete(p5)
+            session.commit()
+
+            # Standard View
+            persons = session.query(Person).all()
+            for person in persons:
+                print(person.id, person.name)
+
+
+    # lecture140:DBM
+        簡易的なDB(一応NoSQL), cashe用途で利用
+        Usage:
+            import dbm
+            with dbm.open('cache', 'c') as db:
+                db['key1'] = 'value1'
+                db['key1'] = 'value2'
+            with dbm.open('cache', 'r') as db:
+                print(db.get('key1'), db.get('key2'),)
+
+
+    # lecture141:memcached
+        あまりWindowsでは行わないため省略。
+
+
+    # lecture142:pickle
+        書き込み：pickle.dump(data, f)
+        読み込み：pickle.load(f)
+        Usage:
+            import pickle
+
+            data = {
+                'a': [1, 2, 3],
+                'b': ('test', 'test'),
+                'c': {'key': 'value'}}
+
+            with open('data.pickle', 'wb') as f:
+                pickle.dump(data, f)
+
+            with open('data.pickle', 'rb') as f:
+                data_loaded = pickle.load(f)
+                print(data_loaded)
+
+
+    # lecture143:MacにMongoDBをインストールする
+        NoSQLのため省略。
+
+
+    # lecture144:WindowsにMongoDBをインストールする
+        NoSQLのため省略。
+
+
+    # lecture145:MongoDB
+        NoSQLのため省略。
+
+
+    # lecture146:Hbase
+        NoSQLのため省略。
+
+
+    # lecture147:Macにneo4jをインストールする
+        NoSQLのため省略。
+
+
+    # lecture148:Windowsにneo4jをインストールする
+        NoSQLのため省略。
+
+
+    # lecture149:neo4j
+        NoSQLのため省略。
+
+
+    # lecture150:データベースのおさらい
+        特になし。
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section13   WEBとネットワーク
+    lecture151:XML
+    lecture152:json
+    lecture153:urllib.request
+    lecture154:requests
+    lecture155:socket通信
+    lecture156:socketserrverとhttp.serverとwebbrowser
+    lecture157:Flask
+    lecture158:BeatifulSoupでWEBスクレイピング
+    lecture159:XML RPC
+    lecture160:networks
+
+#-------------------------------------------------------#
+
+
+    # lecture151:XML
+        Usage：
+            import xml.etree.ElementTree as ET
+            
+            # xmlデータの作成・書き込み
+            root = ET.Element('root')
+            tree = ET.ElementTree(element=root)
+
+            employee = ET.SubElement(root, 'employee')
+
+            employ = ET.SubElement(employee, 'employ')
+            employ_id = ET.SubElement(employ, 'id')
+            employ_id.text = '111'
+            employ_name = ET.SubElement(employ, 'name')
+            employ_name.text = 'Mike'
+
+            employ = ET.SubElement(employee, 'employ')
+            employ_id = ET.SubElement(employ, 'id')
+            employ_id.text = '222'
+            employ_name = ET.SubElement(employ, 'name')
+            employ_name.text = 'Nancy'
+
+            tree.write(HEAD_PATH + 'test.xml', encoding='utf8', xml_declaration=True)
+
+            # xmlデータの読み込み・参照
+            tree = ET.ElementTree(file=HEAD_PATH + 'test.xml')
+            root = tree.getroot()
+
+            for employee in root:
+                for employ in employee:
+                    for person in employ:
+                        print(person.tag, person.text)
+
+
+    # lecture152:json
+        Usage：
+            import json
+
+            j = {"employee": [{"id": 111, "name": "Mike"}, {"id": 222, "name": "Nancy"}]}
+
+            # python上でのエンコード・デコード
+            a = json.dumps(j)
+            b = json.loads(a)
+
+            # 書き込み
+            with open(HEAD_PATH + 'test,json', 'w') as f:
+                json.dump(j, f)
+
+            # 読み込み
+            with open(HEAD_PATH + 'test,json', 'r') as f:
+                print(json.load(f))
+
+
+    # lecture153:urllib.request
+        RESTについて
+            「HTTPメソッド クライアントが行いたい処理を(web)サーバ伝える」
+            ・GET     データの参照
+            ・POST    データの新規登録
+            ・PUT     データの更新
+            ・DELETE  データの削除
+            実際は、lecture153のrequestsを利用したほうが良い
+        
+        ・GET
+            Usage：
+                import urllib.request
+                import json
+
+                payload = {"key1": "value1", "key2": "value2"}
+                url = 'http://httpbin.org/get' + '?' + urllib.parse.urlencode(payload)
+
+                with urllib.request.urlopen(url) as f:
+                    # バイトコードで獲得のため、デコード
+                    ans_json = f.read().decode('utf8')
+                    # Json形式で記載のため、json,loadでdict型にする。
+                    ans = json.loads(ans_json)
+                    print(ans)
+                    
+        ・POST  Requestオブジェクトにjson化データとURL, メソッド(POST)でurlopenする
+            Usage：
+                import urllib.request
+                import json
+
+                payload = json.dumps({"key1": "value1", "key2": "value2"}).encode('utf8')
+                req = urllib.request.Request(
+                    'http://httpbin.org/post', data=payload, method='POST')
+
+                with urllib.request.urlopen(req) as f:
+                    print(json.loads(f.read().decode('utf8')))
+
+        ・PUT  形式はPOSTと同じ
+            Usage：
+                import urllib.request
+                import json
+
+                payload = json.dumps({"key1": "value1", "key2": "value2"}).encode('utf8')
+                req = urllib.request.Request(
+                    'http://httpbin.org/put', data=payload, method='PUT')
+
+                with urllib.request.urlopen(req) as f:
+                    print(json.loads(f.read().decode('utf8')))
+            
+        ・DELETE  形式はPOSTと同じ
+            Usage：
+                import urllib.request
+                import json
+
+                payload = json.dumps({"key1": "value1", "key2": "value2"}).encode('utf8')
+                req = urllib.request.Request(
+                    'http://httpbin.org/delete', data=payload, method='DELETE')
+
+                with urllib.request.urlopen(req) as f:
+                    print(json.loads(f.read().decode('utf8')))
+
+
+    # lecture154:requests
+        requests    urllibよりも直感的な操作をめざしたサードパーティのライブラリ
+        Usage：
+            import requests
+
+            payload = {"key1": "value1", "key2": "value2"}
+
+            # GET
+            r = requests.get('http://httpbin.org/get', params=payload, timeout=1.0)
+            print(r.status_code)
+            print(r.text)
+            print(r.json())
+
+            # POST
+            r = requests.post('http://httpbin.org/post', data=payload)
+            print(r.status_code)
+            print(r.text)
+            print(r.json())
+
+            # PUT
+            r = requests.put('http://httpbin.org/put', data=payload)
+
+            # DELETE
+            r = requests.delete('http://httpbin.org/delete', data=payload)        
+
+
+    # lecture155:socket通信
+        Socketは、サーバとクライアントを結ぶ仮想的な接続を実現する。
+        Usage：
+       【socket_server.py】
+            import socket
+
+            # TCP
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.bind(('localhost', 50007))
+                s.listen(1)
+                while True:
+                    conn, addr = s.accept()
+                    with conn:
+                        while True:
+                            data = conn.recv(1024)
+                            if not data:
+                                break
+                            print('data: {}. addr: {}'.format(data, addr))
+                            conn.sendall(b'Received: ' + data)
+
+            # # UDP
+            # with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+            #     s.bind(('localhost', 50007))
+            #     while True:
+            #         data, addr = s.recv(1024)
+            #         print('data: {}. addr: {}'.format(data, addr))
+            
+        【socket_client.py】
+            import socket
+
+            # TCP
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.connect(('localhost', 50007))
+                s.sendall(b'Hello')
+                data = s.recv(1024)
+                print(repr(data))
+
+            # # UDP
+            # with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+            #     s.sendto(b'Hello UDP', ('localhost', 50007))
+
+
+    # lecture156:socketserrverとhttp.serverとwebbrowser
+        Usage:
+            import http.server
+            import socketserver
+
+            # TCP
+            with socketserver.TCPServer(('localhost', 8000),
+                                        http.server.SimpleHTTPRequestHandler) as httpd:
+                httpd.serve_forever()
+
+            # webbrowser
+            # Terminal
+            # python >>>
+            # import webbrowser
+            # webbrowser.open('localhost:8000')
+
+
+    # lecture157:Flask
+        ☆☆☆
+        サーバ側：flask,requests,render_template
+        クライアント側：requests
+        
+        ■サーバ側での実装
+        ・app(flaskのオブジェクト)で、ページ構造を構築
+        ・クライアントからのhttpメソッド(GET,POST,PUT,DELETE)受付の振る舞いを構築
+        ・その他、ふるまいに必要な実装(i.e, DB構築)を構築
+        ■クライアント側での実装
+        ・httpメソッドのリクエストを構築
+        
+        Usage：DBへの登録をリクエストを介し実施する
+       【lesson.py】: server_side.py
+            from flask import Flask
+            from flask import g
+            from flask import render_template
+            from flask import request
+            from flask import Response
+
+
+            app = Flask(__name__)
+
+
+            def get_db():
+                db = getattr(g, '_database', None)
+                if db is None:
+                    db = g._database = sqlite3.connect('test_sqlite.db')
+                return db
+
+            @app.teardown_appcontext
+            def close_connection(exception):
+                db = getattr(g, '_database', None)
+                if db is not None:
+                    db.close()
+
+            @app.route('/')
+            def hello_world():
+                return 'top !'
+
+            @app.route('/employee', methods=['POST', 'PUT', 'DELETE'])
+            @app.route('/employee/<name>', methods=['GET'])
+            def employee(name=None):
+                db = get_db()
+                curs = db.cursor()
+                curs.execute(
+                    'CREATE TABLE IF NOT EXISTS persons( '
+                    'id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING)'
+                )
+                name = request.values.get('name', name)
+
+                if request.method == 'GET':
+                    curs.execute('SELECT * FROM persons WHERE name ="{}"'.format(name))
+                    person = curs.fetchone()
+                    if not person:
+                        return "No", 404
+                    user_id, name = person
+                    return '{}:{}'.format(user_id, name), 200
+
+                if request.method == 'POST':
+                    curs.execute('INSERT INTO persons(name) values("{}")'.format(name))
+                    db.commit()
+                    return 'created {}'.format(name), 201
+
+                if request.method == 'PUT':
+                    new_name = request.values['new_name']       # あえて.getをしていない(default Noneは困る)。
+                    curs.execute('UPDATE persons set name = "{}" WHERE name = "{}"'
+                                 .format(new_name, name))
+                    db.commit()
+                    return 'updated {}: {}'.format(new_name, name), 200
+
+                if request.method == 'DELETE':
+                    curs.execute('DELETE from persons WHERE name = "{}"'.format(name))
+                    db.commit()
+                    return 'deleted {}'.format(name), 200
+
+                curs.close()
+
+            def main():
+                app.debug = True
+                app.run()
+                # app.run(host='127.0.0.1', port=5000)
+
+
+            if __name__ == '__main__':
+                main()
+        
+        ※ server_sideのスクリプトを実行すれば、指定urlで挙動が確認できる
+
+       【test_flask.py】: client_side.py
+            import requests
+
+            r = requests.post(
+                'http://127.0.0.1:5000/employee', data={'name': 'jun'})
+            print(r.text)
+
+            r = requests.put(
+                'http://127.0.0.1:5000/employee', data={'name': 'jun', 'new_name': 'jack'})
+            print(r.text)
+
+            r = requests.delete(
+                'http://127.0.0.1:5000/employee', data={'name': 'jack'})
+            print(r.text)
+
+
+    # lecture158:BeatifulSoupでWEBスクレイピング
+    Usage：
+        from bs4 import BeautifulSoup
+        import requests
+
+        html = requests.get('https://www.python.org')
+        # print(html.text)
+
+        soup = BeautifulSoup(html.text, 'lxml')
+
+        title = soup.find_all('title')
+        print(title[0].text)
+
+        intro = soup.find_all('div', {'class': 'introduction'})
+        print(intro[0].text)
+
+
+    # lecture159:XML RPC
+        ☆☆XML RPCでの実施内容
+        クライアント側がサーバ側のファンクションをあたかも自分のファンクションのように扱う。
+        ファンクション実行実体はサーバ側が行う。
+        
+        REST：      大量の通信を処理する
+        xml通信：   サーバパワーを利用したい（ネットワーク遅延に注意）
+        
+        Usage：
+        【xmlrpc_server.py】
+            from xmlrpc.server import SimpleXMLRPCServer
+
+            # xml通信（JsonRPCもある）
+            with SimpleXMLRPCServer(('127.0.0.1', 8000)) as server:
+
+                def add_num(x, y):
+                    return x + y
+
+                # サーバー側での関数の登録
+                server.register_function(add_num, "add_num")
+
+                # サーバーの待ち受け
+                server.serve_forever()
+
+        【xmlrpc_client.py】
+            import xmlrpc.client
+
+            with xmlrpc.client.ServerProxy('http://127.0.0.1:8000/') as proxy:
+                print(proxy.add_num(1015564641, 206441364))
+
+
+    # lecture160:networkx
+        ネットワーク図を作るための描画ソフト
+        Usage：
+            import matplotlib.pyplot as plt
+            import networkx as nx
+
+            G = nx.Graph()
+            G.add_node(1)
+
+            G.add_nodes_from([2, 3])
+            G.add_edge(1, 2)
+            G.add_edge(2, 3)
+
+            nx.draw(G)
+            plt.show()
+            
+        ※ もっと複雑な描画のサンプルはnetworkxのHPに記載
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section14    テスト
+    lecture161:doctest
+    lecture162:Unittest
+    lecture163:Unittestで例外テスト
+    lecture164:UnittestのSetupとteardown
+    lecture165:Unittestのスキップ
+    lecture166:pytest
+    lecture167:pytestの例外テスト
+    lecture168:pytestのSetupとteardown
+    lecture169:pytestのスキップ
+    lecture170:pytestのconftest
+    lecture171:pytestのfixture
+    lecture172:pytestの独自のfixture
+    lecture173:pytest-cov どこまでテストすればいいのか
+    lecture174:noseのwebページの紹介
+    lecture175:setuptoolsでestを実行する
+    lecture176:Toxで仮想環境でテストを行う
+    lecture177:seleniumでUIの自動テスト
+    lecture178:mock
+    lecture179:mock.assert
+    lecture180:mock.patch
+    lecture181:mock.side_effect
+    lecture182:mock spec
+    lecture183:どこまでmockするか
+
+# -------------------------------------------------------#
+
+
+    # lecture161:doctest
+        Usage:
+            class Cal(object):
+                def add_num_and_double(pythoself, x, y):
+                    """  Add and double
+
+                    >>> c = Cal()
+                    >>> c.add_num_and_double(1, 1)
+                    4
+
+                    >>> c.add_num_and_double('1', '1')
+                    Traceback (most recent call last):
+                    ...
+                    ValueError
+                    """
+                    if type(x) is not int or type(x) is not int:
+                        raise ValueError
+
+                    result = x + y
+                    result *= 2
+                    return result
+
+
+            if __name__ == '__main__':
+                import doctest
+                doctest.testmod()
+
+
+    # lecture162:Unittest
+        ☆☆  テストを本コードと分離して行える実践的な１つの方法 Unittest
+        概念：
+        １）本コードのファイルを作成（名称：A）
+        ２）テスト用のファイルを作成（名称：unittest_A等がわかりやすい）
+        ３）PycharmのAdd Configurationから、PythonTest→Unittest→２）Unittestファイルを指定
+        ４）実行
+        
+        CMDの場合は、Usage内コード注釈参照
+        
+        【本ファイル】
+            class Cal(object):
+                def add_num_and_double(pythoself, x, y):
+                    if type(x) is not int or type(x) is not int:
+                        raise ValueError
+
+                    result = x + y
+                    result *= 2
+                    return result
+                    
+        【テスト用ファイル】
+            import unittest
+            import calculation
+
+            class CalTest(unittest.TestCase):
+                def test_add_num_and_double(self):
+                    cal = calculation.Cal()
+                    self.assertEqual(cal.add_num_and_double(1, 1), 5)
+
+            # # CMD実行の場合、以下を記載し、CMDか通常のPycharm実行
+            # if __name__ == '__main__':
+            #     unittest.main()
+
+
+    # lecture163:Unittestで例外テスト
+        Usage: withステートメントでassertRaiseを実施
+        【テスト用ファイル】
+            class CalTest(unittest.TestCase):
+                def test_add_num_and_double_raise(self):
+                    cal = calculation.Cal()
+                    with self.assertRaises(ValueError):
+                        cal.add_num_and_double('1', '1')
+
+
+    # lecture164:UnittestのSetupとteardown
+        テスト前後の環境準備
+        前：ssetup
+        後：teardown（これに限らず、finaillyみたいなIT用語らしい）
+        
+        Usage：毎メソッドごとに呼ばれる
+            class CalTest(unittest.TestCase):
+                def setUp(self):
+                    print('setup')
+                    self.cal = calculation.Cal()
+
+                def tearDown(self):
+                    print('clean up')
+                    del self.cal
+
+                def test_add_num_and_double(self):
+                    self.assertEqual(self.cal.add_num_and_double(1, 1), 4)
+
+
+    # lecture165:Unittestのスキップ
+        Usage：unittest.skipでデコレートする
+                release_name = 'lesson'
+                @unittest.skipIf(release_name == 'lesson', 'skip!')
+                def test_add_num_and_double_raise(self):
+
+
+    # lecture166:pytest
+        pytest：テスト判定が直感的で、特定のクラス継承が不要で使いやすい
+        概念：unittestと同様(【テスト用ファイルのみを以下に記載】)
+        Usage:
+        【本ファイル】
+            class Cal(object):
+                def add_num_and_double(pythoself, x, y):
+                    if type(x) is not int or type(x) is not int:
+                        raise ValueError
+
+                    result = x + y
+                    result *= 2
+                    return result
+
+        【テスト用ファイル】
+            import calculation
+            class TestCal(object):
+                def test_add_num_and_double(self):
+                    cal = calculation.Cal()
+                    assert cal.add_num_and_double(1, 1) == 4
+                    
+        CMDで実行する方法：
+            pytest test_***.py
+            pytest .
+            
+            ※ CMDで実行する場合、プリントデバッグが効かない（Pycharmは出力可）
+                → -sを付けると出力される
+
+
+    # lecture167:pytestの例外テスト
+        Usage:
+            import pytest                                   # 変更・追加
+            import calculation
+
+            class TestCal(object):
+                def test_add_num_and_double_raise(self):    # 変更・追加
+                    with pytest.raises(ValueError):
+                        cal = calculation.Cal()
+                        cal.add_num_and_double('1', '1')
+
+
+    # lecture168:pytestのSetupとteardown
+        メソッド前後：(setup_method, teardownp_method)
+        クラス前後：(setup_method, teardownp_method)
+        Usage:
+            import pytest
+            import calculation
+
+            class TestCal(object):
+                @classmethod
+                def setup_class(cls):
+                    print('start')
+                    cls.cal = calculation.Cal()
+
+                @classmethod
+                def teardown_class(cls):
+                    print('end')
+                    del cls.cal
+
+                def setup_method(self, method):
+                    print('method={}'.format(method.__name__))
+                    # self.cal = calculation.Cal()
+
+                def teardown_method(self, method):
+                    print('method={}'.format(method.__name__))
+                    # del self.cal
+
+                def test_add_num_and_double(self):
+                    assert self.cal.add_num_and_double(1, 1) == 4
+
+                def test_add_num_and_double_raise(self):
+                    with pytest.raises(ValueError):
+                        self.cal.add_num_and_double('1', '1')
+
+
+    # lecture169:pytestのスキップ
+        Usage:
+            is_release = True
+        
+            @pytest.mark.skip(reason='skip')
+            def test_add_num_and_double_raise(self):
+                with pytest.raises(ValueError):
+                    self.cal.add_num_and_double('1', '1')
+
+            @pytest.mark.skipif(is_release==True, reason='release ver.')
+            def test_add_num_and_double_raise_if(self):
+                with pytest.raises(ValueError):
+                    self.cal.add_num_and_double('1', '1')
+        
+        reasonの表示：pytest ***.py -rs
+
+
+    # lecture170:pytestのconftest
+        POUNT:
+            CMD実行の引数に応じ(本例では--os-name)、pytestの振る舞いを設定する方法
+        
+        conftest.pyの作成：pytestのテストファイルと同じ階層に‘conftest.py’があるとこれを読込
+        【conftest.py】
+            def pytest_addoption(parser):
+                parser.addoption('--os-name', default='linux', help='os name')
+            
+        【test_***.py】
+            import pytest
+            import calculation
+
+            is_release = True
+
+            class TestCal(object):
+                @classmethod
+                def setup_class(cls):
+                    print('start')
+                    cls.cal = calculation.Cal()
+
+                def test_add_num_and_double(self, request):
+                    os_name = request.config.getoption('--os-name')
+                    print(os_name)
+                    if os_name == 'mac':
+                        print('ls')
+                    elif os_name == 'windows':
+                        print('dir')
+        実行CMD：
+            pytest test_***.py --os-name=mac -s
+        
+        requestが急に出現することについて：
+            pytestのfixtureの１つ
+
+
+    # lecture171:pytestのfixture
+        POUNT:
+            requestのほか、tmpdirの紹介
+            fixtureの考えはテストフレームワークによく利用される
+            
+        【本体ファイル】
+            import os
+
+            class Cal(object):
+                def add_num_and_double(pythoself, x, y):
+                    if type(x) is not int or type(x) is not int:
+                        raise ValueError
+
+                    result = x + y
+                    result *= 2
+                    return result
+
+                def save(self, dir_path, file_name):
+                    if not os.path.exists(dir_path):
+                        os.mkdir(dir_path)
+                    file_path = os.path.join(dir_path, file_name)
+                    with open(file_path, 'w', encoding='utf8') as f:
+                        f.write('test')
+
+        【test_***.py】
+            import os
+            import pytest
+            import calculation
+
+            class TestCal(object):
+                @classmethod
+                def setup_class(cls):
+                    print('start')
+                    cls.cal = calculation.Cal()
+                    cls.test_file_name = 'test.txt'
+
+                def test_add_num_and_double(self):
+                    assert self.cal.add_num_and_double(1, 1) == 4
+
+                def test_save(self, tmpdir):
+                    self.cal.save(tmpdir, self.test_file_name)
+                    test_file_path = os.path.join(tmpdir, self.test_file_name)
+                    assert os.path.exists(test_file_path) is True
+
+
+    # lecture172:pytestの独自のfixture
+        POINT：
+            ・独自fixutureはconftest.pyに、独自fixutureとした文字列でメソッドを作成
+            ・メソッドを@pytest.fixtureでデコレート
+            ・独自fixutureのメソッド内でも、既存fixtureは利用可
+            ・独自fixutureのメソッドの返り値をyeildとすることはよくある。
+              テストファイルにopen/close処理を書く必要がなくなるため。
+              
+            ・独自fixuture csv_fileを定義
+            
+        【conftest.py】
+            import os
+            import pytest
+
+
+            @pytest.fixture
+            def csv_file(tmpdir):
+                with open(os.path.join(tmpdir, 'test.csv'), 'w+') as c:
+                    print('before test')
+                    yield c
+                    print('after test')
+
+            def pytest_addoption(parser):
+                parser.addoption('--os-name', default='linux', help='os name')
+        【test_***.py】
+            import os
+            import pytest
+            import calculation
+
+            class TestCal(object):
+                @classmethod
+                def setup_class(cls):
+                    print('start')
+                    cls.cal = calculation.Cal()
+                    cls.test_file_name = 'test.txt'
+
+                def test_add_num_and_double(self, csv_file):
+                    print(csv_file)
+                    assert self.cal.add_num_and_double(1, 1) == 4
+
+
+    # lecture173:pytest-cov どこまでテストすればいいのか
+        カバレッジ確認のためのバージョンアップ：
+            pip install pytest>=4.4.0
+            pip install pytest-cov pytest-xm
+            pip install pytest-remotedata>=0.3.1
+        
+        実行コマンド：
+            pytest test_calculation.py --cov=calculation --cov-report term-missing
+                --cov：カバレッジ確認のためのオプション
+                       covオプションには、ディレクトリ/ファイル指定が可能で、拡張子は不要
+                --cov-report term-missing：
+                       Missした箇所(カバレッジできていない箇所)のLineを表示            
+        
+        ハマり事項：
+            src 直下に __init__.py に置くとエラーが起こる
+            つまり、基本的にはsrcとテストを一緒の作業ディレクトリに共存させない。
+
+
+    # lecture174:noseのwebページの紹介
+        noseというテストフレームワークもある。
+        
+        
+    # lecture175:setuptoolsでestを実行する
+        sdistによる配布の際、テストも合わせ配布できる(pytest,unittest等)。
+        
+        
+    # lecture176:Toxで仮想環境でテストを行う
+        tox：virtualenvにパッケージをインストールするパッケージ
+        利点：virtualenvを作成するので、現行環境を壊さずに
+              複数のバージョン・組み合わせを確認してテストできる
+        手順：
+            pip install tox
+            tox.iniの作成
+            CMDでtox(tox.iniの親ディレクトリで)
+            
+            設定は都度内容について確認したほうがよさそう。
+            
+        
+    # lecture177:seleniumでUIの自動テスト
+        Selenium設定： https://qiita.com/memakura/items/20a02161fa7e18d8a693
+            pip install selenium
+            pip install chromedriver-binary==73.0.3683.68.0
+                （コード内に、import chromedriver_binaryが必要）
+                （使っているGoogle Chromeに適合したDriverが必要）
+                
+        Usage:
+            import time
+            import unittest
+            from selenium import webdriver
+            from selenium.webdriver.common.by import By
+            from selenium.webdriver.common.keys import Keys
+            from selenium.webdriver.support import expected_conditions as EC
+            from selenium.webdriver.support.ui import WebDriverWait
+            import chromedriver_binary
+
+            # driver = webdriver.Chrome()
+            # driver.get('https://www.google.com/')
+            # time.sleep(5)
+            # search_box = driver.find_element_by_name("q")
+            # search_box.send_keys('ChromeDriver')
+            # search_box.submit()
+            # time.sleep(5)
+            # driver.quit()
+
+            class PythonOrgTest(unittest.TestCase):
+                def setUp(self):
+                    self.driver = webdriver.Chrome()
+
+                def tearDown(self):
+                    self.driver.close()
+
+                def test_python_org(self):
+                    self.driver.get('http://www.python.org')
+
+                    # titleに'Python'があるか
+                    self.assertIn('Python', self.driver.title)
+
+                    # Downloadsタブをクリックできるか
+                    self.driver.find_element_by_link_text('Downloads').click()
+                    # Looking for a specific release? があるか
+                    element = WebDriverWait(self.driver, 10).until(
+                        EC.presence_of_element_located(
+                            (By.CLASS_NAME, 'widget-title')))
+                    self.assertEqual('Looking for a specific release?', element.text)
+
+                    # Documentationタブをクリックできるか
+                    self.driver.find_element_by_link_text('Documentation').click()
+                    # Browse the docs があるか
+                    element = WebDriverWait(self.driver, 10).until(
+                        EC.presence_of_element_located(
+                            (By.CLASS_NAME, 'call-to-action')))
+                    self.assertIn('Browse the docs', element.text)
+                    # search box
+                    element = self.driver.find_element_by_name('q')
+                    element.clear()
+                    element.send_keys('pycon')
+                    element.send_keys(Keys.RETURN)
+                    assert 'No result found' not in self.driver.page_source
+
+
+            # CMD実行の場合、以下を記載し、CMDか通常のPycharm実行
+            if __name__ == '__main__':
+                unittest.main()
+        
+    # lecture178:mock
+        mock：完成していないクラス・メソッドの値を疑似的に返す
+        【salary.py】
+            import requests
+
+            class ThirdPartyBonusApi(object):
+                # このメソッドが不通であるとする
+                def bonus_price(self, year):        
+                    r = requests.get('http://localhost/bonus', params={'year': year})
+                    # {"price": 100}
+                    return r.json()['price']
+
+            class Salary(object):
+                def __init__(self, base=100, year=2017):
+                    self.bonus_api = ThirdPartyBonusApi()
+                    self.base = base
+                    self.year = year
+
+                def calculation_salary(self):
+                    bonus = self.bonus_api.bonus_price(year=self.year)
+                    return self.base + bonus
+                    
+        【test_salary.py】
+            import unittest
+            from unittest.mock import MagicMock
+            import salary
+
+            class TestSaraly(unittest.TestCase):
+                def test_calculation_salary(self):
+                    s = salary.Salary(year=2017)
+                    s.bonus_api.bonus_price = MagicMock(return_value=1)
+                    self.assertEqual(s.calculation_salary(), 101)
+
+            # CMD実行の場合、以下を記載し、CMDか通常のPycharm実行
+            if __name__ == '__main__':
+                unittest.main()
+
+    # lecture179:mock.assert
+        mockする実体の振る舞いが正しいか確認する
+        【test_salary.py(一部)】
+            class TestSaraly(unittest.TestCase):
+                def test_calculation_salary(self):
+                    s = salary.Salary(year=2017)
+                    s.bonus_api.bonus_price = MagicMock(return_value=1)
+                    self.assertEqual(s.calculation_salary(), 101)
+                    s.bonus_api.bonus_price.assert_called()                 # 本当に実体が呼ばれたか
+                    s.bonus_api.bonus_price.assert_called_once()            # 実体が呼ばれたのは一度か
+                    s.bonus_api.bonus_price.assert_called_with(year=2017)   # 実体への引数は正しいか
+                    self.assertEqual(s.bonus_api.bonus_price.call_count, 1)
+
+                def test_calculation_salary_no_salary(self):
+                    s = salary.Salary(year=2050)
+                    s.bonus_api.bonus_price = MagicMock(return_value=0)
+                    self.assertEqual(s.calculation_salary(), 100)
+                    s.bonus_api.bonus_price.assert_not_called()             # s.bonus_api.bonus_priceが呼ばれない確認
+
+
+    # lecture180:mock.patch
+        mock.patchの効果：
+            MagicMockを直接プログラムの中に入れ、
+            特定のメソッドを代替するのではなく、特定のメソッドが代替(未完)であるように動作するように設定
+        【test_salary.py(一部)】
+                # mock.patchでデコレート
+                @mock.patch('salary.ThirdPartyBonusApi.bonus_price')
+                def test_calculation_salary_patch(self, mock_bonus):
+                    mock_bonus.return_value = 1
+
+                    s = salary.Salary(year=2017)
+                    salary_price = s.calculation_salary()
+
+                    self.assertEqual(salary_price, 101)
+                    mock_bonus.assert_called()
+
+                # 特定の処理のみをmockとして、他はmockしたくない場合、withを使用
+                def test_calculation_salary_patch_with(self):
+                    with mock.patch('salary.ThirdPartyBonusApi.bonus_price') as mock_bonus:
+                        mock_bonus.return_value = 1
+
+                        s = salary.Salary(year=2017)
+                        salary_price = s.calculation_salary()
+
+                        self.assertEqual(salary_price, 101)
+                        mock_bonus.assert_called()
+
+                # 特定の処理のみのmockの開始・終了をsetUp/tearDownを用いて実施
+                def setUp(self):
+                    self.patcher = mock.patch('salary.ThirdPartyBonusApi.bonus_price')
+                    self.mock_bonus = self.patcher.start()
+
+                def tearDown(self):
+                    self.patcher.stop()
+
+                def test_calculation_salary_patcher(self):
+                    self.mock_bonus.return_value = 1
+
+                    s = salary.Salary(year=2017)
+                    salary_price = s.calculation_salary()
+
+                    self.assertEqual(salary_price, 101)
+                    self.mock_bonus.assert_called()
+        
+        
+    # lecture181:mock.side_effect
+        mock.side_effectの効果：
+            mockの戻り値を関数化
+            mockの戻り値をリスト化
+        【test_salary.py(一部)】
+            def test_calculation_salary_patch_side_effect(self):
+                # def f(year):
+                #     return year*2
+                self.mock_bonus.side_effect = lambda year: 1    # fと同義
+
+                s = salary.Salary(year=2017)
+                salary_price = s.calculation_salary()
+
+                self.assertEqual(salary_price, 101)
+                self.mock_bonus.assert_called()
+
+            def test_calculation_salary_patch_side_effect_refused_error(self):
+                self.mock_bonus.side_effect = ConnectionRefusedError
+
+                s = salary.Salary(year=2017)
+                salary_price = s.calculation_salary()
+
+                self.assertEqual(salary_price, 100)     # ERRORがでたらbonusは0
+                self.mock_bonus.assert_called()
+
+            def test_calculation_salary_patch_side_effect_list(self):
+                self.mock_bonus.side_effect = [1, 2, 3, ValueError('Bankrupt')]
+
+                # 1
+                s = salary.Salary(year=2017)
+                salary_price = s.calculation_salary()
+                self.assertEqual(salary_price, 101)
+
+                # 2
+                s = salary.Salary(year=2018)
+                salary_price = s.calculation_salary()
+                self.assertEqual(salary_price, 102)
+
+                # 3
+                s = salary.Salary(year=2019)
+                salary_price = s.calculation_salary()
+                self.assertEqual(salary_price, 103)
+
+                # 4
+                s = salary.Salary(year=200)
+                with self.assertRaises(ValueError):
+                    salary_price = s.calculation_salary()
+
+
+    # lecture182:mock spec
+        mockspecの効果：クラスごとmockする
+        【test_salary.py(一部)】
+            @mock.patch('salary.ThirdPartyBonusApi', spec=True)
+            def test_calculation_salary_class(self, MockRest):
+                mock_rest = MockRest.return_value
+                # mock_rest = MockRest()
+                mock_rest.bonus_price.return_value = 1
+                mock_rest.get_api_name.return_value = 'Money'
+
+                s = salary.Salary(year=2017)
+                salary_price = s.calculation_salary()
+
+                self.assertEqual(salary_price, 101)
+                mock_rest.bonus_price.assert_called()
+    
+    
+    # lecture183:どこまでmockするか
+        そもそも外部要因でコントロールできないので、mockする動機
+        （内部プログラムもmockできるが…。
+          Unittestの速度向上 ⇔ プログラムバグの残留、テストバグの恐れ）
+    
+        mock:       特定メソッド・クラスの代替のもの
+        assert:     確認
+        patch:      特定メソッド・クラスが代替されることを明示
+        side_effect:mockの戻り値を関数化・リスト
+        spec:       クラスごとmock
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section15    並列化
+    lecture184:マルチスレッドとマルチプロセス
+    lecture185:スレッド
+    lecture186:スレッドに渡す引数
+    lecture187:デーモンスレッド
+    lecture188:生存中のThreadオブジェクト全てのリスト
+    lecture189:タイマー
+    lecture190:スレッドのLockとRLock
+    lecture191:セマフォ
+    lecture192:キュー
+    lecture193:イベント
+    lecture194:コンディション
+    lecture195:バリア
+    lecture196:マルチプロセス
+    lecture197:ワーカープロセスのプールで非同期
+    lecture198:ワーカープロセスのプールでブロック
+    lecture199:ワーカープロセスのプールとマップ
+    lecture200:プロセス間の通信に関して
+    lecture201:パイプ
+    lecture202:プロセス間での共有メモリ
+    lecture203:マネージャー
+    lecture204:別のマシン上で走るプロセス間のネットワーク越しの共有
+    lecture205:高水準のインターフェース
+
+# -------------------------------------------------------#
+
+    # lecture184:マルチスレッドとマルチプロセス
+        マルチスレッド:リソース(コア・メモリ)を共有する。
+            ・スレッド          並列処理させたいとき
+            ・タイマー          何秒後にスレッドを処理したいとき
+            ・ロック            ロックをとる処理をしたいとき
+            ・セマフォ          ロックをとるスレッド数を管理したいとき
+            ・キュー            値を入れ、入ってから動作する処理をしたいとき
+            ・イベント          何かのトリガーのあと、スレッドを並列処理したいとき
+            ・コンディション    何かのトリガーのあと、スレッドを順々処理したいとき
+            ・バリア            スレッド数が起動してからスレッドを処理したいとき
+            
+        マルチプロセス:リソース(コア・メモリ)を共有しない。
+            ・タイマー～バリア  スレッドと同様の処理が可能
+            ・プール            プール指定した数だけ非同期で処理したいとき
+            ・プールでブロック  他のプロセスを非同期処理させる前に処理したいとき
+            ・マップ            同じ処理(メソッド)を非同期で処理させたいとき
+            ・パイプ            （１つの）プロセスが終了した後の値を別のプロセスで処理したいとき
+            ・バリュー          異なるプロセス間で値のメモリを共有し処理したいとき
+            ・アレイ            異なるプロセス間でリストのメモリを共有し共有し処理したいとき
+            ・マネージャー      
+
+        
+    
+    # lecture185:スレッド
+        スレッド動作手順：
+        ・スレッドで動作させるメソッドを指定してスレッドを作る
+        ・スレッドを開始する
+
+        Usage:
+            logging.basicConfig(level=logging.DEBUG, format='%(threadName)s: %(message)s')
+            def worker1():
+                logging.debug('start')
+                time.sleep(1)
+                logging.debug('end')
+            def worker2():
+                logging.debug('start')
+                time.sleep(1)
+                logging.debug('end')
+
+            # threadでは以下表記が必要
+            if __name__ == '__main__':
+                t1 = threading.Thread(target=worker1)
+                t2 = threading.Thread(target=worker2)
+                t1.start()
+                t2.start()
+                print('started')        
+        
+        ！：threading.Thread時に、メソッドを動作させない('()'をつけない)
+        
+        
+    # lecture186:スレッドに渡す引数
+        Usage:
+            def worker2(x, y=1):
+                logging.debug('start')
+                …
+                
+            t2 = threading.Thread(name='rename_worker1', target=worker2,
+                args=(100,), kwargs={'y': 200})
+        
+        ！：メソッドのおさらい
+            def func(list, kwds=100):
+                …
+    
+    # lecture187:デーモンスレッド
+        デーモン：システムの要求に応じて自動的にサービスを提供するバックグランドシステム
+                  終了を持つ必要がない処理?
+                  特別な処理(join)をしないと終了を待たないので、ゾンビ化する。
+        
+        
+    # lecture188:生存中のThreadオブジェクト全てのリスト
+        動作中のTreadリストを呼ぶ既存方法がある
+        Usage:
+            if __name__ == '__main__':
+                for _ in range(5):
+                    t = threading.Thread(target=worker1)
+                    t.setDaemon(True)
+                    t.start()
+                for thread in threading.enumerate():
+                    if thread is threading.currentThread():
+                        print(thread)
+                        continue
+                    thread.join()
+        
+    # lecture189:タイマー
+        Usage:
+            t = threading.Timer(3, worker1)
+            t.start()
+    
+    
+    # lecture190:スレッドのLockとRLock
+        Lockの使用手順：
+            ①
+            ・threading.Lock()を宣言する(lock)
+            ・threadにlockを引数で渡す
+            ・lock.acquire()とlock.release()でロックしたい処理を囲む
+            ②
+            ・threading.Lock()を宣言する(lock)
+            ・threadにlockを引数で渡す
+            ・with lock: でロックしたい処理を囲む
+        RLockの使用手順：
+            ・lockの中で、lockした情報を活用したい(更新できないけど)
+            
+        Usage：
+            def worker1(d, lock):
+                logging.debug('start')
+                with lock:
+                    i = d['x']
+                    time.sleep(3)
+                    d['x'] = i + 1
+                    logging.debug(d)
+                    with lock:
+                        d['x'] = i + 1
+                        logging.debug(d)
+                logging.debug('end')
+            def worker2(d, lock):
+                logging.debug('start')
+                lock.acquire()
+                i = d['x']
+                d['x'] = i + 1
+                logging.debug(d)
+                lock.release()
+                logging.debug('end')
+
+            # threadでは以下表記が必要
+            if __name__ == '__main__':
+                d = {'x': 0}
+                lock = threading.RLock()
+                t1 = threading.Thread(target=worker1, args=(d, lock))
+                t2 = threading.Thread(target=worker2, args=(d, lock))
+                t1.start()
+                t2.start()
+                print('started')            
+
+
+    # lecture191:セマフォ
+        セマフォ：ロックをとるスレッド数を管理する
+                  セマフォで指定した数だけスレッドできる(セマフォ:１でロック同等)
+        Usage：
+            if __name__ == '__main__':
+                d = {'x': 0}
+                semaphore = threading.Semaphore(2)
+                t1 = threading.Thread(target=worker1, args=(semaphore,))
+                t2 = threading.Thread(target=worker2, args=(semaphore,))
+                t3 = threading.Thread(target=worker3, args=(semaphore,))
+                t1.start()
+                t2.start()
+                t3.start()
+                print('started')
+
+
+    # lecture192:キュー
+        キュー：ロックやセマフォでタイミング・実行を管理するのではなく、
+                所定に値が入ってから動作する
+        
+        Usage：
+            import logging
+            import queue
+            import threading
+            import time
+            logging.basicConfig(level=logging.DEBUG, format='%(threadName)s: %(message)s')
+            def worker1(queue):
+                logging.debug('start')
+                queue.put(100)
+                time.sleep(3)
+                queue.put(200)
+                logging.debug('end')
+
+            def worker2(queue):
+                logging.debug('start')
+                logging.debug(queue.get())
+                logging.debug(queue.get())
+                logging.debug('end')
+
+            if __name__ == '__main__':
+                d = {'x': 0}
+                queue = queue.Queue()
+                t1 = threading.Thread(target=worker1, args=(queue,))
+                t2 = threading.Thread(target=worker2, args=(queue,))
+                t1.start()
+                t2.start()
+
+        Usage：大量のログを３スレッドで解析後、クリーンナップする例
+            def worker(queue):
+                logging.debug('start')
+                while True:
+                    item = queue.get()
+                    if item is None:
+                        break
+                    logging.debug(item)
+                    queue.task_done()
+
+                logging.debug('log Clean UP')
+                logging.debug('end')
+
+            if __name__ == '__main__':
+                d = {'x': 0}
+                queue = queue.Queue()
+                for i in range(10000):
+                    queue.put(i)
+                ts = []
+                for _ in range(3):
+                    t = threading.Thread(target=worker, args=(queue,))
+                    t.start()
+                    ts.append(t)
+                logging.debug('task are not done')
+                queue.join()
+                logging.debug('task are done')
+                queue.put(None)
+                queue.put(None)
+                queue.put(None)
+
+                [t.join() for r in ts]
+
+    # lecture193:イベント
+        イベントの使用手順：何かのトリガーのあと、処理したいとき
+            ・threading.Event()をeventとして、スレッドのメソッドに渡す
+            ・event.set()をトリガーにする。これによりが動作できる
+            ・event.wait()がトリガーで動作開始する
+        Usage：
+            import logging
+            import queue
+            import threading
+            import time
+            logging.basicConfig(level=logging.DEBUG, format='%(threadName)s: %(message)s')
+
+            def worker1(event):
+                event.wait()
+                logging.debug('start')
+                time.sleep(2)
+                logging.debug('end')
+            def worker2(event):
+                event.wait()
+                logging.debug('start')
+                time.sleep(2)
+                logging.debug('end')
+            def worker3(event):
+                logging.debug('start')
+                logging.debug('end')
+                event.set()
+
+            if __name__ == '__main__':
+                event = threading.Event()
+                t1 = threading.Thread(target=worker1, args=(event,))
+                t2 = threading.Thread(target=worker2, args=(event,))
+                t3 = threading.Thread(target=worker3, args=(event,))
+                t1.start()
+                t2.start()
+                t3.start()
+    
+    
+    # lecture194:コンディション
+        コンディションの使用手順：ロック＋イベント処理みたいな感じ
+        Usage：
+            def worker1(condition):
+                with condition:
+                    condition.wait()
+                    logging.debug('start')
+                    time.sleep(2)
+                    logging.debug('end')
+            def worker2(condition):
+                with condition:
+                    condition.wait()
+                    logging.debug('start')
+                    time.sleep(2)
+                    logging.debug('end')
+            def worker3(condition):
+                with condition:
+                    logging.debug('start')
+                    time.sleep(1)
+                    logging.debug('end')
+                    condition.notifyAll()
+
+            if __name__ == '__main__':
+                condition = threading.Condition()
+                t1 = threading.Thread(target=worker1, args=(condition,))
+                t2 = threading.Thread(target=worker2, args=(condition,))
+                t3 = threading.Thread(target=worker3, args=(condition,))
+                t1.start()
+                t2.start()
+                t3.start()
+    
+    # lecture195:バリア
+        バリア：バリア数：２にすることで、両方のスレッドが有効でないと処理を開始できなくすることができる
+        Usage：
+            def worker1(barrier):
+                r = barrier.wait()
+                logging.debug('num={}'.format(r))
+                while True:
+                    logging.debug('start')
+                    time.sleep(1)
+                    logging.debug('end')
+
+
+            def worker2(barrier):
+                r = barrier.wait()
+                logging.debug('num={}'.format(r))
+                while True:
+                    logging.debug('start')
+                    time.sleep(1)
+                    logging.debug('end')
+
+
+            if __name__ == '__main__':
+                barrier = threading.Barrier(2)
+                t1 = threading.Thread(target=worker1, args=(barrier,))
+                t2 = threading.Thread(target=worker2, args=(barrier,))
+                t1.start()
+                t2.start()
+    
+    
+    # lecture196:マルチプロセス
+        スレッドで実施可能な機能はマルチプロセスでもできる
+        Usage：
+            from multiprocessing import (
+                Process,
+                Lock, RLock, Semaphore, Queue, Event, Condition, Barrier,
+                Value, Array, Pipe, Manager)
+            import logging
+            import multiprocessing
+            import time
+            logging.basicConfig(level=logging.DEBUG, format='%(processName)s: %(message)s')
+
+            def worker1(i):
+                logging.debug('start')
+                logging.debug(i)
+                time.sleep(1)
+                logging.debug('end')
+            def worker2(i):
+                logging.debug('start')
+                logging.debug(i)
+                logging.debug('end')
+
+            if __name__ == '__main__':
+                i = 10
+                t1 = multiprocessing.Process(target=worker1, args=(i,))
+                t1.daemon = True
+                t2 = multiprocessing.Process(target=worker2, args=(i,))
+                t1.start()
+                t2.start()
+                t1.join()
+                t2.join()
+
+
+    # lecture197:ワーカープロセスのプールで非同期
+        プール：プロセスで平行に処理する数を決めること
+                プール数を超えるプロセスを実行すると並列実行されない
+                apply_asyncで非同期に動作開始し、get()までコードが進む
+        Usage：
+            def worker1(i):
+                logging.debug('start')
+                time.sleep(1.5)
+                logging.debug('end')
+                return i
+
+            if __name__ == '__main__':
+                with multiprocessing.Pool(3) as p:
+                    p1 = p.apply_async(worker1, (100,))
+                    p2 = p.apply_async(worker1, (100,))
+                    logging.debug('excuted')
+                    logging.debug(p1.get(timeout=2))
+                    logging.debug(p2.get())
+
+
+    # lecture198:ワーカープロセスのプールでブロック
+        アプライ(プールでブロック)：applyすることで他のプロセスを並列化させる前に指定処理を行う
+                                    applyで動作開始するが、処理が終了するまで次コードへ進まない
+                                    
+        Usage：
+            def worker1(i):
+                logging.debug('start')
+                time.sleep(1.5)
+                logging.debug('end')
+                return i
+
+            if __name__ == '__main__':
+                with multiprocessing.Pool(3) as p:
+                    logging.debug(p.apply(worker1, (200,)))
+                    logging.debug('excuted apply')
+                    p1 = p.apply_async(worker1, (100,))
+                    p2 = p.apply_async(worker1, (100,))
+                    logging.debug('excuted')
+                    logging.debug(p1.get())
+                    logging.debug(p2.get())
+
+
+    # lecture199:ワーカープロセスのプールとマップ
+        マップ：同じ処理(メソッド)を非同期で動作させる
+                mapで動作開始するが、処理が終了するまで次コードへ進まない
+                ただし、map_asyncにすることで非同期に動作開始し、get()までコードが進む
+                また、imapで返り値をクロージャー(関数オブジェクト)で獲得できる
+        
+    # lecture200:プロセス間の通信に関して
+        スレッドでは、共有リソースをロックを用いてコントロールしていた。
+        マルチプロセスでは、プロセスごとにリソースを持っているので、
+        統合するには別個処理が必要となる。
+        その処理をさせるのが、Pipe, Value, Array, Managerである。
+        
+        
+    # lecture201:パイプ
+        パイプ：１つのプロセスが終了した後の値を別のプロセスで処理したいとき
+        Usage：
+            def f(conn):
+                conn.send(['test'])
+                time.sleep(2)
+                conn.close()
+
+            if __name__ == '__main__':
+                parent_conn, child_conn = multiprocessing.Pipe()
+                p = multiprocessing.Process(target=f, args=(parent_conn,))
+                p.start()
+                logging.debug(child_conn.recv())
+    
+    # lecture202:プロセス間での共有メモリ
+        バリュー・アレイ：異なるプロセス間でメモリを共有する処理に用いる
+                          Cの処理が走るため型宣言ぽいのがある
+                          プロセスセーフなのでマルチ参照しても最終的には結果が合致する
+        Usage：
+        def f(num, arr):
+            logging.debug(num)
+            num.value += 1.0
+            logging.debug(arr)
+            for i in range(len(arr)):
+                arr[i] *= 2
+
+        if __name__ == '__main__':
+            num = multiprocessing.Value('f', 0.0)
+            arr = multiprocessing.Array('i', [1, 2, 3, 4, 5])
+
+            p1 = multiprocessing.Process(target=f, args=(num, arr))
+            p2 = multiprocessing.Process(target=f, args=(num, arr))
+            p1.start()
+            p2.start()
+
+            p1.join()
+            p2.join()
+
+            logging.debug(num.value)
+            logging.debug(arr[:])
+        
+        
+    # lecture203:マネージャー
+        マネージャー：バリュー/アレイはCライクだったが、Pythonicにコードを処理したいとき
+                      バリュー/アレイはCライク、マネージャーがPythonなので速度に差がある。
+        Usage:
+            def worker1(l, d, n):
+                l.reverse()
+                d['x'] += 1
+                n.y += 1
+
+            if __name__ == '__main__':
+                with multiprocessing.Manager() as manager:
+                    l = manager.list()
+                    d = manager.dict()
+                    n = manager.Namespace()
+                    l.append(1)
+                    l.append(2)
+                    l.append(3)
+                    d['x'] = 0
+                    n.y = 0
+
+                    p1 = multiprocessing.Process(target=worker1, args=(l, d, n))
+                    p2 = multiprocessing.Process(target=worker1, args=(l, d, n))
+                    p1.start()
+                    p2.start()
+                    p1.join()
+                    p2.join()
+
+                    logging.debug(l)
+                    logging.debug(d)
+                    logging.debug(n)
+        
+        
+    # lecture204:別のマシン上で走るプロセス間のネットワーク越しの共有
+        設定：サーバとクライアント１、２がある。
+              クライアント１がサーバにキューでデータをアップロードし、
+              クライアント２がサーバからキューのデータをダウンロードする。
+        Usage:
+        【sever.py】
+            import queue
+            from multiprocessing.managers import BaseManager
+
+            queue = queue.Queue()
+            class QueueManager(BaseManager):
+                pass
+
+            QueueManager.register(
+                'get_queue', callable=lambda: queue)
+            manager = QueueManager(
+                address=('127.0.0.1', 50000),
+                authkey=b'asdfgtrewq')
+            server = manager.get_server()
+            server.serve_forever()
+            
+        【client1.py】
+            from multiprocessing.managers import BaseManager
+            class QueueManager(BaseManager):
+                pass
+
+            QueueManager.register('get_queue')
+            manager = QueueManager(
+                address=('127.0.0.1', 50000),
+                authkey=b'asdfgtrewq')
+
+            manager.connect()
+            queue = manager.get_queue()
+            queue.put('Hello')
+            
+        【client2.py】
+            from multiprocessing.managers import BaseManager
+            class QueueManager(BaseManager):
+                pass
+
+            QueueManager.register('get_queue')
+            manager = QueueManager(
+                address=('127.0.0.1', 50000),
+                authkey=b'asdfgtrewq')
+
+            manager.connect()
+            queue = manager.get_queue()
+            print(queue.get())
+
+
+    # lecture205:高水準のインターフェース
+        concurrent.futures：並列/並行して結果を返す処理をthreading/multiprocessingより簡易に行う。
+        Usage：
+            # import threading
+            # import multiprocessing
+            import concurrent.futures
+            import logging
+            import time
+            logging.basicConfig(level=logging.DEBUG, format='%(threadName)s: %(message)s')
+            # logging.basicConfig(level=logging.DEBUG, format='%(processName)s: %(message)s')
+
+            def worker(x, y):
+                logging.debug('start')
+                r = x * y
+                logging.debug(r)
+                logging.debug('end')
+                return r
+
+            def main():
+                with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+                # with concurrent.futures.ProsessPoolExecutor(max_workers=5) as executor:
+                    f1 = executor.submit(worker, 2, 5)
+                    f2 = executor.submit(worker, 2, 5)
+                    logging.debug(f1.result())
+                    logging.debug(f2.result())
+
+                    # args = [[2, 2], [5, 5]]
+                    # r = executor.map(worker, *args)
+                    # logging.debug(r)
+                    # logging.debug([i for i in r])
+
+            if __name__ == '__main__':
+                main()
+
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section16    暗号化
+    lecture206:文字コード
+    lecture207:pycryproの暗号化と複合化
+    lecture208:hashlibのハッシュ
+
+# -------------------------------------------------------#
+
+    # lecture206:文字コード
+        エンコード：ｘｘをエンコードYYで、バイナリデータに書き込む。
+        デコード：バイナリデータを、エンコードYYで読み込む。
+        
+    # lecture207:pycryproの暗号化と複合化
+        encrypt:暗号化
+        decrypt:複合化
+        Usage：
+            import string
+            import random
+            import logging
+            from Crypto.Cipher import AES
+            logging.basicConfig(level=logging.DEBUG, format='%(message)s')
+
+
+            key = ''.join(random.choice(string.ascii_letters)
+                          for _ in range(AES.block_size))
+
+            iv = ''.join(random.choice(string.ascii_letters)
+                         for _ in range(AES.block_size))
+
+            # plaintext = 'fanacnnakmacu'
+
+            # encrypt
+            with open('test.txt', 'r', encoding='utf8') as f, open('enc.txt', 'wb') as e:
+                plaintext = f.read()
+                cipher = AES.new(key, AES.MODE_CBC, iv)
+                padding_length = AES.block_size - len(plaintext) % AES.block_size
+                plaintext += chr(padding_length) * padding_length
+                cipher_text = cipher.encrypt(plaintext)
+                logging.debug(cipher_text)
+                e.write(cipher_text)
+
+            # decrypt
+            with open('enc.txt', 'rb') as f:
+                cipher2 = AES.new(key, AES.MODE_CBC, iv)
+                decrypt_text = cipher2.decrypt(f.read())
+                logging.debug(decrypt_text[:-decrypt_text[-1]])
+                print(decrypt_text[:-decrypt_text[-1]].decode('utf8'))
+
+        
+    # lecture208:hashlibのハッシュ
+        文字列の暗号化手順：
+        ・saltの追加hashlibによる暗号化
+        ・hashlibによる暗号化
+        ・hashlibによる暗号化の繰り返し
+        Usage：
+            import base64
+            import os
+            import hashlib
+
+            user_name = 'user1'
+            user_pass = 'password'
+            db = {}
+
+            salt = base64.b64encode(os.urandom(32))
+
+            def get_digest(password):
+                # password = bytes(password, 'utf8')
+                # digest = hashlib.sha3_256(salt+password).hexdigest()
+                # for _ in range(1000):
+                #     digest = hashlib.sha3_256(bytes(digest, 'utf8')).hexdigest()
+
+                return hashlib.pbkdf2_hmac('sha256', bytes(password, 'utf8'), salt, 1000)
+
+            def is_login(user_name, password):
+                return get_digest(password) == db[user_name]
+
+
+            db[user_name] = get_digest(user_pass)
+            print(db[user_name].decode('utf8'))
+            print(is_login(user_name, user_pass))
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section17    インフラ構築自動化
+    lecture209:インフラ自動化構築の環境に関して
+    lecture210:MacにVagrantとVirtualboxをインストールする
+    lecture211:WindowsにVagrantとVirtualboxをインストールする
+    lecture212:Vagrantfileのダウウンロード
+    lecture213:VagrantfileでVMを立ち上げる
+    lecture214:Fabric
+    lecture215:Fabricで自動化
+    lecture216:Ansibleで自動化
+    lecture217:Ansibleのモジュールの作成
+    lecture218:ソースコードのダウンロード
+
+# -------------------------------------------------------#
+
+
+    # lecture209:インフラ自動化構築の環境に関して
+        業務上、必要性が低いので省略。
+        
+    # lecture210:MacにVagrantとVirtualboxをインストールする
+    # lecture211:WindowsにVagrantとVirtualboxをインストールする
+    # lecture212:Vagrantfileのダウウンロード
+    # lecture213:VagrantfileでVMを立ち上げる
+    # lecture214:Fabric
+    # lecture215:Fabricで自動化
+    # lecture216:Ansibleで自動化
+    # lecture217:Ansibleのモジュールの作成
+    # lecture218:ソースコードのダウンロード
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section18    Pythonの便利なライブラリやスールや豆知識
+    lecture219:IPython
+    lecture220:contextlib.contextmanager
+    lecture221:contextlib.ContextDecorator
+    lecture222:contextlib.suppres
+    lecture223:contextlib.redirect_stdoutとcontextlib.redirect_stderr
+    lecture224:contextlib.ExitStack
+    lecture225:ioストリーム
+    lecture226:collections.ChainMap
+    lecture227:collections.defaultdict
+    lecture228:collections.Counter
+    lecture229:collections.deque
+    lecture230:collections.namedtuple
+    lecture231:collections.OrderedDictとPython3.6のdict
+    lecture232:正規表現re
+    lecture233:正規表現のre.groupとre.compileとre.VERBOSE
+    lecture234:正規表現のre.splitの分割とre.compileの置換
+    lecture235:正規表現のGreedy
+    lecture236:format表記
+    lecture237:reprとstr
+    lecture238:pprint vs json.dump
+    lecture239:ビット演算
+    lecture240:Enum
+    lecture241:function.lru_cacheとmemoize
+    lecture242:functools.wraps
+    lecture243:functools.partial
+
+# -------------------------------------------------------#
+
+    # lecture219:IPython
+        python consoleの他、作業ディレクトリに新規作成で、
+        jupyter Notebookを指定すれば、セルやボタンアリでファイルとして編集できる。
+        
+    # lecture220:contextlib.contextmanager
+        デコレータタグに引数を与え、処理を変更したいとき
+        Usage：
+            import contextlib
+
+            @contextlib.contextmanager
+            def tag(name):
+                print('<{}>'.format(name))
+                yield
+                print('</{}>'.format(name))
+
+            # 方法①
+            # @tag('h2')
+            # def f(content):
+            #     print(content)
+            #
+            # f('test')
+
+            # 方法②
+            # with tag('h2'):
+            #     print('test')
+        
+        
+    # lecture221:contextlib.ContextDecorator
+        複雑な処理をクラスのデコレータに実施させ、実行を簡素にするとき
+        Usage：
+            import contextlib
+
+            class tag(contextlib.ContextDecorator):
+                def __init__(self, name):
+                    self.name = name
+                    self.start_tag = '<{}>'.format(name)
+                    self.end_tag = '</{}>'.format(name)
+                def __enter__(self):
+                    print(self.start_tag)
+                def __exit__(self, exc_type, exc_val, exc_tb):
+                    print(self.end_tag)
+
+            with tag('h2'):
+                print('test')
+        
+        
+    # lecture222:contextlib.suppres
+        try-exceptionで、exception時passをするような処理に関し、簡易に実装するとき
+        Usage：
+            import contextlib
+            import os
+
+            # try:
+            #     os.remove('anlajcn.tmp')
+            # except FileNotFoundError:
+            #     pass
+
+            with contextlib.suppress(FileNotFoundError):
+                os.remove('anlajcn.tmp')        
+        
+        
+    # lecture223:contextlib.redirect_stdoutとcontextlib.redirect_stderr
+        stdin: terminal(keyboard) -> process
+        stdout: process -> terminal(console)
+        
+        stdouやstderrをterminalでなくファイルに書き出したいとき
+        Usage：
+            import logging
+            import contextlib
+
+            with open('stdout.log', 'w') as f:
+                with contextlib.redirect_stdout(f):
+                    print('hello')
+                    # help(sys.stdout)
+
+            with open('stderr.log', 'w') as f:
+                with contextlib.redirect_stderr(f):
+                    logging.error('error')
+
+
+    # lecture224:contextlib.ExitStack
+        try-finally で行うような処理を条件を付けて実施するとき
+        stack.callbackがあれば最後行う処理が早い段階で把握できる。
+        
+        Usage：
+            import contextlib
+
+            def is_ok_job():
+                try:
+                    print('do something')
+                    raise Exception('error')
+                    return True
+                except Exception:
+                    return False
+
+            def cleanup1():
+                print('clean up1')
+            def cleanup2():
+                print('clean up2')
+
+            # try:
+            #     is_ok = is_ok_job()
+            #     print('more tasks')
+            # finally:
+            #     if not is_ok:
+            #         cleanup1()
+            #         cleanup2()
+
+            with contextlib.ExitStack() as stack:
+                stack.callback(cleanup1)
+                stack.callback(cleanup2)
+                
+
+                is_ok = is_ok_job()
+                print('more tasks')
+
+                if is_ok:
+                    stack.pop_all()
+
+
+    # lecture225:ioストリーム
+        実際のファイルI/Oを実施せず、インメモリでのI/Oを確認するとき
+        Usage：
+            import io
+            import requests
+            import zipfile
+
+            with open('a.txt', 'w', encoding='utf8') as f:
+                f.write('test test')
+            with open('a.txt', 'r', encoding='utf8') as f:
+                print(f.read())
+
+            f = io.StringIO()
+            f.write('String io test')
+            f.seek(0)
+            print(f.read())
+
+            f = io.BytesIO()
+            f.write(b'String io test')
+            f.seek(0)
+            print(f.read())
+            
+            # zipに含まれたファイルをファイル展開なしにインメモリで扱う例
+            url = 'https://files.pythonhosted.org/packages/ed/69/c805067de1feedbb98c5' \
+                  '3174b0f2df44cc05e0e9ee73bb85eebc59e508c6/setuptools-41.0.0.zip'
+            f = io.BytesIO()
+            r = requests.get(url)
+            f.write(r.content)
+
+            with zipfile.ZipFile(f) as z:
+                with z.open('setuptools-41.0.0/README.rst') as r:
+                    print(r.read().decode())
+
+    # lecture226:collections.ChainMap
+        dictの更新の際、distの情報を捨てずに保持したいとき
+        Usage：
+            import collections
+
+            a = {'a': 'a', 'c': 'c', 'num': 0}
+            b = {'b': 'b', 'c': 'cc'}
+            c = {'b': 'bbb', 'c': 'ccc'}
+
+            class DeepChainMap(collections.ChainMap):
+                def __setitem__(self, key, value):
+                    for mapping in self.maps:
+                        if key in mapping:
+                            if type(mapping[key]) is int and mapping[key] < value:
+                                mapping[key] = value
+                            return
+                    self.maps[0][key] = value
+
+            m = DeepChainMap(a, b, c)
+            m['num'] = 1
+            print(m.maps)
+
+            # print(a)
+            # a.update(b)
+            # print(a)
+            # a.update(c)
+            # print(a)
+
+            # m = collections.ChainMap(a, b, c)
+            # m.maps.reverse()
+            # m.maps.insert(0, {'c': 'cccccc'})
+            # del m.maps[0]
+            # print(m['c'])
+            # m['b'] = 'BBBBB'
+            # print(m.maps)
+        
+        
+    # lecture227:collections.defaultdict
+        collections.defaultdict(int)：わざわざ辞書にキーがあるか記述しない
+        Usage：
+            import collections
+
+            d = {}
+            l = ['a', 'a', 'a', 'b', 'b', 'c']
+            for word in l:
+                if word not in d:
+                    d[word] = 0
+                d[word] += 1
+            print(d)
+
+            d = {}
+            l = ['a', 'a', 'a', 'b', 'b', 'c']
+            for word in l:
+                d.setdefault(word, 0)
+                d[word] += 1
+            print(d)
+
+            d = collections.defaultdict(int)
+            l = ['a', 'a', 'a', 'b', 'b', 'c']
+            for word in l:
+                d[word] += 1
+            print(d)
+
+            ### 集合として扱痛い場合
+            d = collections.defaultdict(set)
+            s = [('red', 1), ('blue', 2), ('red', 3), ('blue', 4),
+                 ('red', 1), ('blue', 4)]
+            for k, v in s:
+                d[k].add(v)
+            print(d)
+
+    # lecture228:collections.Counter
+        collections.Counter：データ構造が含む情報のカウント処理に特化したクラス
+        Usage：
+            import collections
+            import re
+
+            c = collections.Counter()
+            l = ['a', 'a', 'a', 'b', 'b', 'c']
+            for word in l:
+                c[word] += 1
+            print(c)
+            print(c.most_common(3))
+            print(c.values())
+
+            with open('lesson.py', 'r', encoding='utf8') as f:
+                words = re.findall(r'\w+', f.read().lower())
+                print(words)
+                print(collections.Counter(words).most_common(3))
+
+
+    # lecture229:collections.deque
+        collections.deque()：メモリの効率上、Queue/LifoQueueより、両側から優れて取り出せる
+        Usage：
+            import collections
+            import queue
+
+            q = queue.Queue()       # FIFO
+            lq = queue.LifoQueue()  # LIFO
+            l = []
+            dr = collections.deque()   # Double-end queue:
+            dl = collections.deque()   # Double-end queue:
+
+            d = collections.deque()   # Double-end queue:
+
+            for i in range(3):
+                q.put(i)
+                lq.put(i)
+                l.append(i)
+                dr.append(i)
+                dl.append(i)
+                d.append(i)
+
+
+            # for _ in range(3):
+            #     print('FIFO queue = {}'.format(q.get()))
+            #     print('LIFO queue = {}'.format(lq.get()))
+            #     print('List       = {}'.format(l.pop()))
+            #     print('dequeue(R) = {}'.format(dr.pop()))
+            #     print('dequeue(L) = {}'.format(dl.popleft()))
+            #     print()
+
+            print(d)
+            d.rotate(1)
+            print(d)
+            d.rotate(-1)
+            print(d)
+            d.extend('R')
+            d.extendleft('L')
+            print(d)
+
+            d.clear()
+            print(d)
+
+
+    # lecture230:collections.namedtuple
+        書き換え不可能なタプルを直感的に使う
+        Usage：
+            import csv
+            import collections
+
+            with open('names,csv', 'w', newline='', encoding='utf8') as csvfile:
+                fieldnames = ['first', 'last', 'address']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerow({'first': 'Mika', 'last': 'Jackson', 'address': 'A'})
+                writer.writerow({'first': 'Jun', 'last': 'Sakai', 'address': 'B'})
+                writer.writerow({'first': 'Nancy', 'last': 'Mask', 'address': 'C'})
+
+            with open('names,csv', 'r', newline='', encoding='utf8') as f:
+                csv_reader = csv.reader(f)
+                # 'Names'というnamedtupleでfieldnamesを辞書keyを作る
+                Names = collections.namedtuple('Names', next(csv_reader))
+                for row in csv_reader:
+                    # 辞書keyへvalueを流す
+                    names = Names._make(row)
+                    print(names.first, names.last, names.address)
+
+            # p = (10, 20)
+            # print(p[0])
+            #
+            # # tupleなので不可
+            # # p[0] = 100
+            #
+            # Point = collections.namedtuple('Point', ['x', 'y'])
+            # p = Point(10, 20)
+            # print(p.x)
+            #
+            # p1 = Point._make([100, 200])
+            # print(p1)
+            # print(p1._asdict())
+            #
+            # p1._replace(x=400)
+            # print(p1)
+            # p2 = p1._replace(x=400)
+            # print(p2)
+            #
+            #
+            # class SumPoint(collections.namedtuple('Point', ['x', 'y'])):
+            #     @property
+            #     def total(self):
+            #         return self.x + self.y
+            #
+            # p3 = SumPoint(2, 3)
+            # print(p3.x, p3.y, p3.total)
+
+    
+    # lecture231:collections.OrderedDictとPython3.6のdict
+        dictionaryを順序まで規定する(Python3.6では完全保証していない。2.xはぐしゃぐしゃ。)
+        Usage：
+            import collections
+
+            od = collections.OrderedDict(
+                {'banana': 3, 'apple': 4, 'pear': 1, 'orange': 2})
+            d = {'banana': 3, 'apple': 4, 'pear': 1, 'orange': 2}
+            print(d == od)  # True.     ただし、順序が違うOrderedDict同士はFalseとなる。
+
+            dic = {'banana': 3, 'apple': 4, 'pear': 1, 'orange': 2}
+            o_dic = collections.OrderedDict(sorted(dic.items(), key=lambda t: t[0]))
+            print(o_dic)
+
+            o_dic['cc'] = 100
+            o_dic = collections.OrderedDict(sorted(o_dic.items(), key=lambda t: t[0]))
+            print(o_dic)
+
+
+    # lecture232:正規表現re
+        ・match()     文字列の先頭で正規表現と一致するか判定  
+        ・search()    文字列を操作して、正規表現がどこに一致するか調べる
+        ・findall()   正規表現に一致する部分文字列をすべて探しリストとして返す
+        ・finditer()  重複しないマッチオブジェクトのイテレートを返す
+        
+        基本：
+        \w      # 英数字記号文字        [a-zA-Z0-9] でも可
+        \W      # 英数字記号文字でない  [^a-zA-Z0-9] でも可
+        \d      # 数字
+        \s      # 半角スペース
+        ^       # 先頭
+        $       # 末尾
+        
+        
+    # lecture233:正規表現のre.groupとre.compileとre.VERBOSE
+        一致箇所の取り出し:
+        re.match((?P<region>[\w]+), str)
+        m.group('region')
+        
+        正規表現の記録：
+        RE_STACK = re.compile(r'ars:aws:cloudformation:(?P<region>[\w\:]+)stack/')
+        m = RE_STACK.match(str)
+        region = m.group('region')
+    
+        正規表現記録についての見やすさの改善：
+        RE_STACK = re.compile(r"""
+            ars:aws:cloudformation:
+            area_point/(?P<region>[\w]+)    # region
+            usr_num/(?P<id>[0-9]{12})       # id
+            address(?P<adr>[\w]+            # adr
+            """, re.VERBOSE)
+    
+    
+    # lecture234:正規表現のre.splitの分割とre.compileの置換
+        Usage：
+            import re
+
+            s = 'My name is ... Mike'
+            print(s.split())
+
+            p = re.compile(r'\W+')
+            print(p.split(s))
+
+            p = re.compile(r'blue|white|red')
+            print(p.sub('colour', 'blue socks and red shoes'))
+            print(p.sub('colour', 'blue socks and red shoes', count=1))
+            print(p.subn('colour', 'blue socks and red shoes'))
+
+            def hexrepl(match):
+                value =int(match.group())
+                return hex(value)
+
+            p = re.compile(r'\d')
+            print(p.sub(hexrepl, '12345 55 157 test'))
+
+
+    # lecture235:正規表現のGreedy
+        Usage：
+            import re
+
+            s = '<html><head><title>Title</title></head></html>'
+            print(re.match('<.*>', s))      # Greedy        :<html><head><title>Title</title></head></html>
+            print(re.match('<.*?>', s))     # No Greedy     :<html>
+
+
+    # lecture236:format表記
+        ☆☆☆
+        基本： '{}'内では、「':'にて左右に分け」、「左部分がデータ」「右部分が表示形式」となる。
+            表示形式1 埋め文字の指定
+            表示形式2 アライン(左、中央、右)指定
+            表示形式3 総桁数指定
+            表示形式4 '.'＋少数点以下数の指定
+            表示形式5 ％変換指定
+        
+        Usage：
+            print('{accuracy:<20}'.format(accuracy=0.987654321))        # 0.987654321
+            print('{accuracy:>20}'.format(accuracy=0.987654321))        #         0.987654321
+            print('{accuracy:^20}'.format(accuracy=0.987654321))        #    0.987654321
+
+            print('{accuracy:.5}'.format(accuracy=0.987654321))         # 0.98765
+            print('{accuracy:.5%}'.format(accuracy=0.987654321))        # 98.76543%
+
+            print('{accuracy:>20.5%}'.format(accuracy=0.987654321))     #            98.76543%
+            print('{accuracy:_>20.5%}'.format(accuracy=0.987654321))    # ___________98.76543%
+
+        ！：バイナリ・ヘキサ・オクト変換も可能だが略
+
+
+    # lecture237:reprとstr
+        repr: representation オブジェクトが表示される
+        
+            import datetime
+            d = datetime.datetime.now()
+            print(d)            # 2019-04-21 16:36:19.257483
+            print(str(d))       # 2019-04-21 16:36:19.257483
+            print(repr(d))      # datetime.datetime(2019, 4, 21, 16, 36, 19, 257483)
+        
+        クラスの中での定義
+        def __repr__():
+        def __str__():
+        
+        print(repr(s))
+        print(str(s))
+
+
+    # lecture238:pprint vs json.dump
+        pprint: リスト(辞書も可)を綺麗に標準出力する
+        json.dump: 辞書を綺麗に標準出力する
+        
+        Usage：
+            import json
+            import pprint
+
+            l = ['apple', 'orange', 'banana', 'peach', 'mango']
+            print(l)
+            l.insert(0, l[:])
+            pp = pprint.PrettyPrinter(indent=4, width=40, compact=True, depth=2)
+            pp.pprint(l)
+
+            d = {'a': 'A', 'b': 'B', 'c': {'x': {'a': 'A', 'b': 'B', 'c': 'C'}}}
+            pp.pprint(d)
+            print(json.dumps(d, indent=4))
+
+
+    # lecture239:ビット演算
+        論理和  |
+        論理積  &
+        排他的  ^
+        反転    ~
+        シフト  binary >> 1 (binary << 1)
+    
+    # lecture240:Enum
+        Usage：
+            import enum
+
+            class Status(enum.Enum):
+                ACTIVE = 1
+                # RENAMED_ACTIVE = 1
+                INACTIVE = 2
+                RUNNING = 3
+
+            # どんなステータスコードがあるか調べる
+            # for s in Status:
+            #     print(s)
+            #     print(type(s))
+            #
+            # print(Status(1))
+
+            print(Status.ACTIVE)            # Status.ACTIVE
+            print(repr(Status.ACTIVE))      # <Status.ACTIVE: 1>
+            print(Status.ACTIVE.name)       # ACTIVE
+            print(Status.ACTIVE.value)      # 1
+
+            db = {'stack1': 1, 'stack2': 2}
+
+            if Status(db['stack1']) == Status.ACTIVE:
+                print('shutdown')
+            elif Status(db['stack1']) == Status.INACTIVE:
+                print('terminate')
+
+
+    # lecture241:function.lru_cacheとmemoize
+    ☆☆☆
+    関数実行のキャッシュを保存する：
+    Usage：
+        import functools
+
+        def long_func(n):
+            r = 0
+            for i in range(10000000):
+                r += n * i
+            return r
+
+        @functools.lru_cache()
+        def long_func(n):
+            r = 0
+            for i in range(10000000):
+                r += n * i
+            return r
+
+        for i in range(10):
+            print(long_func(i))
+
+        print(long_func.cache_info())
+        
+        # use cache
+        for i in range(10):
+            print(long_func(i))
+        
+        long_func.cache_clear()
+
+
+    # lecture242:functools.wraps
+        デコレータを有す関数のdocstringについて
+        デコレータのラッパーが表示されるのではなく、関数のdocstringを表示させる。
+        Usage：
+            import functools
+
+            def d(f):
+                @functools.wraps(f)                 # ココにfunctools.wrapsを書く
+                def w():
+                    """ wrapper docstring """
+                    print('deco')
+                    return f()
+                return w
+
+            @d
+            def example():
+                """ Example docstring """
+                print('example')
+
+
+            example()
+
+            help(example)
+            print(example.__doc__)
+
+
+    # lecture243:functools.partial
+        クロージャーを簡易的に記載する。
+        Usage：
+            import functools
+
+            def f(x, y):
+                return x + y
+
+            def task(f):
+                print('start')
+                print(f())
+
+            p = functools.partial(f, 10, 20)
+            task(p)
+
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section19    グラフィックス
+    lecture244:子供向けグラフィックスturtle
+    lecture245:turtleで描画してみる
+    lecture246:GUIツールキットtkinter
+    lecture247:tkinterで計算機のアプリを作ってみる
+    lecture248:計算機アプリのソースコード
+    lecture249:Mac上でアプリを作成する
+    lecture250:Windows上でインストーラーを作成する
+    lecture251:kivyで簡単なゲームアプリ開発のご紹介
+
+# -------------------------------------------------------#
+
+
+    # lecture244:子供向けグラフィックスturtle
+        pass
+        
+        
+    # lecture245:turtleで描画してみる
+        pass
+    
+    
+    # lecture246:GUIツールキットtkinter
+        root = tk.Tk()  ： こうしているのは１回しか作らないから
+        pack()          ： ボタン等を適当に取り扱う
+        
+        
+    # lecture247:tkinterで計算機のアプリを作ってみる
+         tk.Buttonにおける、command引数について：
+                Buttonが押されたときに hoge関数 が呼ばれることになります。
+                ここで、よくある間違いとしては "command=hoge()" のような書き方で、
+                これでは『hoge関数を実行して、その戻り値を command に設定する』という意味に
+                なってしまいますので意図した動作になりません。
+                無名関数 lambda で置き換えることで : より右側の処理が実行する。
+                <https://teratail.com/questions/156609>
+                
+                ？ command=hoge()とすると hoge関数が一回しか実行されない(または文法エラーになる)。
+                
+                -> command引数の関数の与え方：
+                    １）カッコなしで関数を呼び出す
+                    ２）関数に引数が必要な場合は、lambdaで引数あり関数を呼び出す（推奨）
+
+
+    # lecture248:計算機アプリのソースコード
+        特になし。
+        
+        
+    # lecture249:Mac上でアプリを作成する
+        特になし。
+    
+    
+    # lecture250:Windows上でインストーラーを作成する
+        cx_Freeze: Windows上でインストーラー作成アプリケーション
+        
+        Python3.7＆Windows10の場合、通常のpip install cx_Freeze では動作しない。
+        そのため、ここ<https://www.lfd.uci.edu/~gohlke/pythonlibs/#cx_freeze>から
+        対応whlをダウンロードして、インストールする。
+        インストール方法：
+            １）管理者権限でCMDを起動
+            ２）pip -V でインストール想定のインタープリターか確認
+            ３）「pip install cx_Freeze-5.1.1-cp37-cp37m-win_amd64.whl」を実行
+            ４）インタープリター指定のsite-packagesにパッケージが追加されたか確認
+        
+        プログラムのインストーラー作成方法：    
+            １）workspace以下にsetup.py作成
+            ２）内容設定：詳細割愛(特にtcl,tk)
+            ３）python setup.py build
+            ４）python setup.py bdist_msi
+            ５）workspace以下のdist内のmsiを実行・インストール
+        
+        
+    # lecture251:kivyで簡単なゲームアプリ開発のご紹介
+        kivy: tkinnerと同じくGUIのパッケージ
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section20    データ解析
+    lecture252:データ解析の概念
+    lecture253:Jupyter Notebook
+    lecture254:numpy
+    lecture255:pasndas
+    lecture256:matplotlib
+    lecture257:scikit-learn
+    lecture258:株価のデータ解析と予測
+    lecture259:データ解析の章のソースコード
+
+# -------------------------------------------------------#
+
+
+    # lecture252:データ解析の概念
+        Pass
+        
+        
+    # lecture253:Jupyter Notebook
+       Pycharmからの起動<https://stackoverflow.com/questions/41736309/jupyter-notebook-in-pycharm/45716341#45716341>
+       １）ipynbファイルの新規作成
+       ２）｛Runボタンを押し、「http://localhost:8888」のみ残しOK、RUN Jpyter Notebook → Get URL
+           ｛CMDで jupyter notebook list → Get URL
+       ３）URLから、Jpyter Notebookを起動
+    
+    
+    # lecture254:numpy
+        ・a.dtype.name
+            'int32'（※ a = np.array([1, 2, 3])）
+            
+        ・np.linspace(0, 2, 9)
+            array([0.  , 0.25, 0.5 , 0.75, 1.  , 1.25, 1.5 , 1.75, 2.  ])
+            
+        ・np.set_printoptions(threshold=10000)
+          np.arange(10000)
+            表示がちょちょぎれない。
+            
+        ・np.vstack([x,y,z])
+            array([[ 0,  2,  4,  6,  8],
+           [ 0,  1,  2,  3,  4],
+           [ 0, 20, 40, 60, 80]]
+           
+        ・np.hstack([x,y,z])
+            array([ 0,  2,  4,  6,  8,  0,  1,  2,  3,  4,  0, 20, 40, 60, 80])
+            
+
+    # lecture255:pasndas
+        ・axis
+            0：列に対して
+            1：行に対して
+        
+        ・df.shift(1)
+            一行下にずれる
+
+    # lecture256:matplotlib
+        ・基本１：
+            plt.plot([1, 2, 3, 4],[1, 4, 9, 16])
+            plt.axis([0,6,0,10])    # x:0-6, y:0-10
+            plt.show()
+        
+        ・基本２
+            x = np.arange(5)
+            y = [2,4,6,8,10]
+            y2 = [10,11,12,13,14]
+
+            plt.plot(x, y, 'r', label='Y')
+            plt.plot(x, y2,'b',label='Y2')
+            # plt.legend()
+            plt.show()
+
+
+    # lecture257:scikit-learn
+        pass
+        
+        
+    # lecture258:株価のデータ解析と予測
+        3シリーズの同時描画：
+            df_aapl['change'].plot(grid=True, figsize=(15,6), color='red')
+            df_fb['change'].plot(grid=True, figsize=(15,6), color='blue')
+            df_gold['change'].plot(grid=True, figsize=(15,6), color='orange')
+            plt.show()
+
+
+
+    # lecture259:データ解析の章のソースコード
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section21    キューイングシステム
+    lecture260:キューイングシステムとは
+    lecture261:ZeroMQのPushとPull
+    lecture262:ZeroMQのPubとSub
+    lecture263:MacにRabbitMQをインストールする
+    lecture264:WindowsにRabbitMQをインストールする
+    lecture265:celeryとは
+    lecture266:celeryでタスクを非同期で実行する
+
+# -------------------------------------------------------#
+
+
+    # lecture260:キューイングシステムとは
+        ・パブリッシュとサブスクライブの関係
+            ブローカの有り・無しで、
+            バックエンドでタスクを請け負い、実行する・しないがある。
+            （タスクが永続化するので継続性が向上する）
+        
+    # lecture261:ZeroMQのPushとPull
+        ・Push＆Pull：ServerにID(非固定)を設定しておき、Client(複数想定)が取り出す
+        【server.py】
+            import time
+            import zmq
+
+            context = zmq.Context()
+            sock = context.socket(zmq.PUSH)
+            sock.bind("tcp://127.0.0.1:5690")
+
+            id = 0
+            while True:
+                id += 1
+                sock.send(str(id).encode())
+                print("Sent: {}".format(id))
+                time.sleep(1)
+
+        【client.py】
+            import zmq
+
+            conntext = zmq.Context()
+            sock = conntext.socket(zmq.PULL)
+            sock.connect("tcp://127.0.0.1:5690")
+
+            while True:
+                message = sock.recv()
+                print("Recieved: {}".format(message.decode()))
+        
+        
+    # lecture262:ZeroMQのPubとSub
+        ・Publishu＆Subscribe：ServerにID(固定)を設定しておき、Client(複数想定)が取り出す
+        【server.py】
+            import time
+            import zmq
+
+            context = zmq.Context()
+            sock = context.socket(zmq.PUB)
+            sock.bind("tcp://127.0.0.1:5690")
+
+
+            id = 0
+            while True:
+                id += 1
+                sock.send(("Sub1: " + str(id)).encode())
+                print("Sent: {}".format(id))
+                time.sleep(1)
+
+        【client.py】
+            import zmq
+
+            conntext = zmq.Context()
+            sock = conntext.socket(zmq.SUB)
+            sock.setsockopt(zmq.SUBSCRIBE, b'Sub1')
+            sock.connect("tcp://127.0.0.1:5690")
+
+            while True:
+                message = sock.recv()
+                print("Recieved: {}".format(message.decode()))
+
+
+    # lecture263:MacにRabbitMQをインストールする
+        pass
+        
+        
+
+    # lecture264:WindowsにRabbitMQをインストールする
+        rabbitmq-server-3.7.14
+            otp_win64_21.3
+    
+        1) rabbitmq-serverの起動
+            コマンドプロンプト→rabbitmq-server start
+        2) rabbitmq-serverの停止
+           コマンドプロンプト→rabbitmq-server stop
+
+            
+    # lecture265:celeryとは
+        python job queue 処理のフレームワーク。
+        worker daemon を待機させて async 処理の仕組みを作ったり、
+        beat daemon を起動して定時バッチ処理を組んだりする。
+        
+        
+    # lecture266:celeryでタスクを非同期で実行する
+        python3.7では、celeryは4.2＋である必要があるが、
+        Windowsではceleryは4.Xは動作しない。
+        ※  エンハンス待ち（さすがに3.6へダウングレードするのはかったるい）
+        
+        なお、celeryでは、コード変更の度、再始動が必要。
+
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section22    非同期処理 asyncio
+    lecture267:スレッドとマルチプロセスのI/OバウンドとCPUバウンドを理解する
+    lecture268:非同期処理とは
+    lecture269:ジェネレーターベースのコルーチン
+    lecture270:yeild from文
+    lecture271:コルーチンとネイティブコルーチン
+    lecture272:asyncioを使用する場面をイメージする
+    lecture273:asyncio.Lock
+    lecture274:asyncio.Event
+    lecture275:asyncio.Condition
+    lecture276:新しいスタイルの変更
+    lecture277:asyncio.Semaphone
+    lecture278:asyncio.Queue
+    lecture279:asyncio.Future
+    lecture280:asyncio.call_soonとasyncio.call_later
+    lecture281:asyncioびチェーン
+    lecture282:サーバークライアントのストリーム通信
+    lecture283:ネイティブコルーチンとジェネレータベースのtypes.coroutine
+    lecture284:特殊メソッドの__await__を使ったAwatable Class
+    lecture285:async for文と__anext__
+    lecture286:async with文と__aenter__と__aexist__
+    lecture287:websocketsのご紹介
+    lecture288:bloking関数を並列に実行する場合
+    lecture289:asyncio.subprocess
+
+# -------------------------------------------------------#
+
+
+    # lecture267:スレッドとマルチプロセスのI/OバウンドとCPUバウンドを理解する
+    # lecture268:非同期処理とは
+    # lecture269:ジェネレーターベースのコルーチン
+    # lecture270:yeild from文
+    # lecture271:コルーチンとネイティブコルーチン
+    # lecture272:asyncioを使用する場面をイメージする
+    # lecture273:asyncio.Lock
+    # lecture274:asyncio.Event
+    # lecture275:asyncio.Condition
+    # lecture276:新しいスタイルの変更
+    # lecture277:asyncio.Semaphone
+    # lecture278:asyncio.Queue
+    # lecture279:asyncio.Future
+    # lecture280:asyncio.call_soonとasyncio.call_later
+    # lecture281:asyncioびチェーン
+    # lecture282:サーバークライアントのストリーム通信
+    # lecture283:ネイティブコルーチンとジェネレータベースのtypes.coroutine
+    # lecture284:特殊メソッドの__await__を使ったAwatable Class
+    # lecture285:async for文と__anext__
+    # lecture286:async with文と__aenter__と__aexist__
+    # lecture287:websocketsのご紹介
+    # lecture288:bloking関数を並列に実行する場合
+    # lecture289:asyncio.subprocess
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+section23    最後に
+    lecture290:ありがとうございました！
+
+# -------------------------------------------------------#
+
+
+    # lecture290:ありがとうございました！
+

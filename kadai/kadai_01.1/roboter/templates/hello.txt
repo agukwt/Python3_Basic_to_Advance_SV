@@ -1,0 +1,2 @@
+こんにちは！私は$robot_nameです。あなたの名前は何ですか？
+Hello, I am $robot_name. What is your name?

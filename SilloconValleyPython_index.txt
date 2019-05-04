@@ -1,0 +1,304 @@
+Udemy_SilloconValleyPython
+
+section01    ここから開始しましょう。
+section02    Python環境の設定
+section03    Pythonの基本
+section04    データー構造
+section05    制御フローとコード構造
+section06    モジュールとパッケージ
+section07    オブジェクトとクラス
+section08    ファイル操作とシステム
+section09    入門編の終了 応用編に行く前に簡単なアプリケーションの演習
+section10    コードスタイル
+section11    コンフィグとロギング
+section12    データベース
+section13    WEBとネットワーク
+
+#########################################################################
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+section01    lecture001~003: 略
+section02    lecture004~007: 略
+section03    lecture008: 変数宣言
+section03    lecture009: まずはprintで出力
+section03    lecture010: 数値
+section03    lecture011: 文字列
+section03    lecture012: 文字列のインデックスとスライス
+section03    lecture013: 文字のメソッド
+section03    lecture014: 文字の代入
+section03    lecture015: f-strings
+section04    lecture016: リスト型
+section04    lecture017: リストの操作
+section04    lecture018: リストのメソッド
+section04    lecture019: リストのコピー
+section04    lecture020: リストの使い所
+section04    lecture021: タプル型
+section04    lecture022: タプルのアンパッキング
+section04    lecture023: タプルの使い所
+section04    lecture024: 辞書型
+section04    lecture025: 辞書型のメソッド
+section04    lecture026: 辞書のコピー
+section04    lecture027: 辞書の使い所
+section04    lecture028: 集合型
+section04    lecture029: 集合のメソッド
+section04    lecture030: 集合の使い所
+section05    lecture031: コメント
+section05    lecture032: 1行が長くなる時
+section05    lecture033: if文
+section05    lecture034: デバッカーを使って確認してみる
+section05    lecture035: 論理演算子
+section05    lecture036: InとNotの使い所
+section05    lecture037: 値が入っていない判定をするテクニック
+section05    lecture038: Noneを判定する場合
+section05    lecture039: while文とcontinue文とbreak文
+section05    lecture040: while else文
+section05    lecture041: input関数
+section05    lecture042: for文とbreak文とcontinue文
+section05    lecture043: for else文
+section05    lecture044: range関数
+section05    lecture045: enumerate関数
+section05    lecture046: zip関数
+section05    lecture047: 辞書をfor文で処理する
+section05    lecture048: 関数定義
+section05    lecture049: 関数の引数と返り値の宣言
+section05    lecture050: 位置引数とキーワード引数とデフォルト引数
+section05    lecture051: デフォルト引数で気をつきること
+section05    lecture052: 位置引数のタプル化
+section05    lecture053: キーワード引数の辞書化
+section05    lecture054: Docstringとは
+section05    lecture055: 関数内関数
+section05    lecture056: クロージャー
+section05    lecture057: デコレーター
+section05    lecture058: ラムダ
+section05    lecture059: ジェネレータ
+section05    lecture060: リスト内包表記
+section05    lecture061: 辞書内包表記
+section05    lecture062: 集合内包表記
+section05    lecture063: ジェネレータ内包表記
+section05    lecture064: 名前空間とスコープ
+section05    lecture065: 例外処理
+section05    lecture066: 独自例外の作成
+section06    lecture067: コマンドライン引数
+section06    lecture068: import文とAS
+section06    lecture069: 絶対パスと相対パスのimport
+section06    lecture070: アスタリスクのインポートと__init__.pyと__all__の意味
+section06    lecture071: importErrorの使い所
+section06    lecture072: setup.pyでパッケージ化して配布する
+section06    lecture073: 組み込み関数
+section06    lecture074: 標準ライブラリ
+section06    lecture075: サードパーティーのライブラリ
+section06    lecture076: importする際の記述の仕方
+section06    lecture077: __name__と__main__
+section07    lecture078: クラスの定義
+section07    lecture079: クラスの初期化とクラス変数
+section07    lecture080: コンストラクタとデクストラクタ
+section07    lecture081: クラス継承
+section07    lecture082: メソッドのオーバーライドとsuperによる親のメソッドの呼び出し
+section07    lecture083: プロパティーを使った属性の設定
+section07    lecture084: クラスを構造体として扱う時の注意点
+section07    lecture085: ダックタイピング
+section07    lecture086: 抽象クラス
+section07    lecture087: 多重継承
+section07    lecture088: クラス変数
+section07    lecture089: クラスメソッドとスタティックメソッド
+section07    lecture090: 特殊メソッド
+section08    lecture091: ファイル作成
+section08    lecture092: withステートメントでファイルをopenする
+section08    lecture093: ファイルの読み込み
+section08    lecture094: seekを使って移動する
+section08    lecture095: 書き込み読み込みモード
+section08    lecture096: テンプレート
+section08    lecture097: CSVファイルへの書き込みと読み込み
+section08    lecture098: ファイル操作
+section08    lecture099: tarfileの圧縮解凍
+section08    lecture100: zipfileの圧縮解凍
+section08    lecture101: tempfile
+section08    lecture102: subprocessでコマンドを実行する
+section08    lecture103: datetime
+section09    lecture104: windowsとmacのコマンド
+section09    lecture105: 簡単なアプリケーションを作って見よう
+section09    lecture106: デモアプリケーションの流れを説明したPDF
+section09    lecture107: デモアプリのコードを展開する
+section09    lecture108: サンプルのデモアプリケーションのコード
+section09    lecture109: サンプルコードの設計とフォルダ構造
+section09    lecture110: サンプルコードのviewsとテンプレートの解
+section09    lecture111: サンプルコードのmodelsとcontrollerの開設
+section10    lecture112: コードスタイルをチェックするツールの確認
+section10    lecture113: スタイルのルール
+section10    lecture114: Pythonの書き方
+section10    lecture115: ドキュメントとPylint
+section10    lecture116: 文章のようにPythonを書く
+section11    lecture117: 応用編に行く前に
+section11    lecture118: configparser
+section11    lecture119: yaml
+section11    lecture120: ロギング
+section11    lecture121: ロギング フォーマット
+section11    lecture122: ロギング ロガー
+section11    lecture123: ロギング ハンドラー
+section11    lecture124: ロギング フィルタ
+section11    lecture125: ロギング コンフィグ
+section11    lecture126: ロギングの書き方
+section11    lecture127: Email送信
+section11    lecture128: 添付ファイルEmail送信
+section11    lecture129: SMTPハンドラーでログをEmailで送信
+section11    lecture130: virtualenv
+section11    lecture131: optparse
+section12    lecture132: データベースに関して
+section12    lecture133: MacにHomeBrewとSQLiteをインストールする
+section12    lecture134: WindowsにSQLiteをインストールする
+section12    lecture135: SQLite
+section12    lecture136: MacにMySQLをインストールする
+section12    lecture137: WindowsにMySQLをインストールする
+section12    lecture138: MySQL
+section12    lecture139: SQLAlchemy
+section12    lecture140: DBM
+section12    lecture141: memcached
+section12    lecture142: pickle
+section12    lecture143: MacにMongoDBをインストールする
+section12    lecture144: WindowsにMongoDBをインストールする
+section12    lecture145: MongoDB
+section12    lecture146: Hbase
+section12    lecture147: Macにneo4jをインストールする
+section12    lecture148: Windowsにneo4jをインストールする
+section12    lecture149: neo4j
+section12    lecture150: データベースのおさらい
+section13    lecture151: XML
+section13    lecture152: json
+section13    lecture153: urllib.request
+section13    lecture154: requests
+section13    lecture155: socket通信
+section13    lecture156: socketserrverとhttp.serverとwebbrowser
+section13    lecture157: Flask
+section13    lecture158: BeatifulSoupでWEBスクレイピング
+section13    lecture159: XML RPC
+section13    lecture160: networkx
+section14    lecture161: doctest
+section14    lecture162: Unittest
+section14    lecture163: Unittestで例外テスト
+section14    lecture164: UnittestのSetupとteardown
+section14    lecture165: Unittestのスキップ
+section14    lecture166: pytest
+section14    lecture167: pytestの例外テスト
+section14    lecture168: pytestのSetupとteardown
+section14    lecture169: pytestのスキップ
+section14    lecture170: pytestのconftest
+section14    lecture171: pytestのfixture
+section14    lecture172: pytestの独自のfixture
+section14    lecture173: pytest-cov どこまでテストすればいいのか
+section14    lecture174: noseのwebページの紹介
+section14    lecture175: setuptoolsでestを実行する
+section14    lecture176: Toxで仮想環境でテストを行う
+section14    lecture177: seleniumでUIの自動テスト
+section14    lecture178: mock
+section14    lecture179: mock.assert
+section14    lecture180: mock.patch
+section14    lecture181: mock.side_effect
+section14    lecture182: mock spec
+section14    lecture183: どこまでmockするか
+section15    lecture184: マルチスレッドとマルチプロセス
+section15    lecture185: スレッド
+section15    lecture186: スレッドに渡す引数
+section15    lecture187: デーモンスレッド
+section15    lecture188: 生存中のThreadオブジェクト全てのリスト
+section15    lecture189: タイマー
+section15    lecture190: スレッドのLookとRLock
+section15    lecture191: セマフォ
+section15    lecture192: キュー
+section15    lecture193: イベント
+section15    lecture194: コンディション
+section15    lecture195: バリア
+section15    lecture196: マルチプロセス
+section15    lecture197: ワーカープロセスのプールで非同期
+section15    lecture198: ワーカープロセスのプールでブロック
+section15    lecture199: ワーカープロセスのプールとマップ
+section15    lecture200: プロセス間の通信に関して
+section15    lecture201: パイプ
+section15    lecture202: プロセス間での共有メモリ
+section15    lecture203: マネージャー
+section15    lecture204: 別のマシン上で走るプロセス間のネットワーク越しの共有
+section15    lecture205: 高水準のインターフェース
+section16    lecture206: 文字コード
+section16    lecture207: pycryproの暗号化と複合化
+section16    lecture208: hashlibのハッシュ
+section17    lecture209: インフラ自動化構築の環境に関して
+section17    lecture210: MacにVagrantとVirtualboxをインストールする
+section17    lecture211: WindowsにVagrantとVirtualboxをインストールする
+section17    lecture212: Vagrantfileのダウウンロード
+section17    lecture213: VagrantfileでVMを立ち上げる
+section17    lecture214: Fabric
+section17    lecture215: Fabricで自動化
+section17    lecture216: Ansibleで自動化
+section17    lecture217: Ansibleのモジュールの作成
+section17    lecture218: ソースコードのダウンロード
+section18    lecture219: IPython
+section18    lecture220: contextlib.contextmanager
+section18    lecture221: contextlib.ContextDecorator
+section18    lecture222: contextlib.suppres
+section18    lecture223: contextlib.redirect_stdoutとcontextlib.redirect_stderr
+section18    lecture224: contextlib.ExitStack
+section18    lecture225: ioストリーム
+section18    lecture226: collections.ChainMap
+section18    lecture227: collections.defaultdict
+section18    lecture228: collections.Counter
+section18    lecture229: collections.deque
+section18    lecture230: collections.namedtuple
+section18    lecture231: collections.OrderedDictとPython3.6のdict
+section18    lecture232: 正規表現re
+section18    lecture233: 正規表現のre.groupとre.compileとre.VERBOSE
+section18    lecture234: 正規表現のre.splitの分割とre.compileの置換
+section18    lecture235: 正規表現のGreedy
+section18    lecture236: format表記
+section18    lecture237: reprとstr
+section18    lecture238: pprint vs json.dump
+section18    lecture239: ビット演算
+section18    lecture240: Enum
+section18    lecture241: function.lru_cacheとmemoize
+section18    lecture242: functools.wraps
+section18    lecture243: functools.partial
+section19    lecture244: 子供向けグラフィックスturtle
+section19    lecture245: turtleで描画してみる
+section19    lecture246: GUIツールキットtkinter
+section19    lecture247: tkinterで計算機のアプリを作ってみる
+section19    lecture248: 計算機アプリのソースコード
+section19    lecture249: Mac上でアプリを作成する
+section19    lecture250: Windows上でインストーラーを作成する
+section19    lecture251: kivyで簡単なゲームアプリ開発のご紹介
+section20    lecture252: データ解析の概念
+section20    lecture253: Jupyter Notebook
+section20    lecture254: numpy
+section20    lecture255: pasndas
+section20    lecture256: matplotlib
+section20    lecture257: scikit-learn
+section20    lecture258: 株価のデータ解析と予測
+section20    lecture259: データ解析の章のソースコード
+section21    lecture260: キューイングシステムとは
+section21    lecture261: ZeroMQのPushとPull
+section21    lecture262: ZeroMQのPubとSub
+section21    lecture263: MacにRabbitMQをインストールする
+section21    lecture264: WindowsにRabbitMQをインストールする
+section21    lecture265: celeryとは
+section21    lecture266: celeryでタスクを非同期で実行する
+section22    lecture267: スレッドとマルチプロセスのI/OバウンドとCPUバウンドを理解する
+section22    lecture268: 非同期処理とは
+section22    lecture269: ジェネレーターベースのコルーチン
+section22    lecture270: yeild from文
+section22    lecture271: コルーチンとネイティブコルーチン
+section22    lecture272: asyncioを使用する場面をイメージする
+section22    lecture273: asyncio.Lock
+section22    lecture274: asyncio.Event
+section22    lecture275: asyncio.Condition
+section22    lecture276: 新しいスタイルの変更
+section22    lecture277: asyncio.Semaphone
+section22    lecture278: asyncio.Queue
+section22    lecture279: asyncio.Future
+section22    lecture280: asyncio.call_soonとasyncio.call_later
+section22    lecture281: asyncioびチェーン
+section22    lecture282: サーバークライアントのストリーム通信
+section22    lecture283: ネイティブコルーチンとジェネレータベースのtypes.coroutine
+section22    lecture284: 特殊メソッドの__await__を使ったAwatable Class
+section22    lecture285: async for文と__anext__
+section22    lecture286: async with文と__aenter__と__aexist__
+section22    lecture287: websocketsのご紹介
+section22    lecture288: bloking関数を並列に実行する場合
+section22    lecture289: asyncio.subprocess
+section23    lecture290: ありがとうございました！

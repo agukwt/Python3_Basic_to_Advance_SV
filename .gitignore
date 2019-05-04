@@ -1,0 +1,7 @@
+# Ignore temp dir
+/temp/
+
+# Ignore .idea-contents
+.idea/**
+/*/.idea/**
+/*/*/.idea/**
