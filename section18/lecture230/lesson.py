@@ -12,7 +12,7 @@ with open('names,csv', 'w', newline='', encoding='utf8') as csvfile:
     writer.writerow({'first': 'Jun', 'last': 'Sakai', 'address': 'B'})
     writer.writerow({'first': 'Nancy', 'last': 'Mask', 'address': 'C'})
 
-with open('names,csv', 'r', newline='', encoding='utf8') as f:
+with open('names.csv', 'r', newline='', encoding='utf8') as f:
     csv_reader = csv.reader(f)
     # 'Names'というnamedtupleでfieldnamesを辞書keyを作る
     Names = collections.namedtuple('Names', next(csv_reader))

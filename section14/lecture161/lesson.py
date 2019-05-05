@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 class Cal(object):
-    def add_num_and_double(pythoself, x, y):
+    def add_num_and_double(self, x, y):
         """  Add and double
 
         >>> c = Cal()
